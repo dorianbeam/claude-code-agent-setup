@@ -1,0 +1,238 @@
+{
+  "tool_type": "generic_custom_tool",
+  "description": "Sample of a generic custom tool created by users for specific workflows",
+  "sample": {
+    "toolFunctionName": "custom_data_transformer",
+    "toolName": "Custom Data Transformer",
+    "iconSrc": "https://example.com/custom-tool-icon.svg",
+    "type": "custom_tool",
+    "isVisibleOnUi": true,
+    "integrationId": null,
+    "meta": null,
+    "outputId": "custom_transform_output_123",
+    "prompt": "This custom tool will transform your data according to your specific business logic and requirements.",
+    "output": {
+      "id": "custom_output_456",
+      "name": "Transformed Data",
+      "image": "https://example.com/transform-result-icon.svg",
+      "tools": [
+        "data_validator",
+        "format_checker"
+      ]
+    },
+    "inputParams": [
+      {
+        "paramName": "source_data",
+        "fillType": "user_input",
+        "question": "What data do you want to transform?",
+        "linkParams": null,
+        "linkParamOutputId": null,
+        "paramDescription": "The source data to be processed by the custom transformation logic",
+        "staticValue": null,
+        "required": true,
+        "dataType": "object"
+      },
+      {
+        "paramName": "transformation_rules",
+        "fillType": "static",
+        "question": null,
+        "linkParams": null,
+        "linkParamOutputId": null,
+        "paramDescription": "Custom transformation rules defined by the user",
+        "staticValue": {
+          "mapping": {
+            "firstName": "first_name",
+            "lastName": "last_name",
+            "email": "email_address"
+          },
+          "filters": [
+            "remove_empty_fields",
+            "validate_email"
+          ],
+          "formatting": {
+            "date_format": "YYYY-MM-DD",
+            "name_case": "title_case"
+          }
+        },
+        "required": true,
+        "dataType": "object"
+      },
+      {
+        "paramName": "validation_mode",
+        "fillType": "ai_fill",
+        "question": "What level of validation should be applied?",
+        "linkParams": {
+          "toolId": "validation_selector",
+          "toolFunctionName": "get_validation_level",
+          "outputParam": "validation_config",
+          "outputId": "validation_output_789"
+        },
+        "linkParamOutputId": "validation_link_012",
+        "paramDescription": "Determines the validation level for the transformation",
+        "staticValue": null,
+        "required": false,
+        "dataType": "string"
+      }
+    ],
+    "requiresConsent": false,
+    "isMemoryTool": false,
+    "isBackgroundTool": true,
+    "embedding": null,
+    "memoryLookupInstruction": null,
+    "outputParams": [
+      {
+        "paramName": "transformed_data",
+        "paramDescription": "The data after applying custom transformation rules",
+        "id": "transformed_data_param",
+        "agentToolConfigurationId": "custom_config_345"
+      },
+      {
+        "paramName": "transformation_log",
+        "paramDescription": "Log of transformations applied during processing",
+        "id": "transform_log_param",
+        "agentToolConfigurationId": "custom_config_345"
+      },
+      {
+        "paramName": "validation_results",
+        "paramDescription": "Results of data validation during transformation",
+        "id": "validation_results_param",
+        "agentToolConfigurationId": "custom_config_345"
+      }
+    ],
+    "isBatchExecutionEnabled": true,
+    "isCodeExecutionEnabled": true,
+    "description": "A custom tool for transforming data according to user-defined business logic and transformation rules",
+    "isActive": true,
+    "workspaceId": "workspace_custom_789",
+    "userId": "user_custom_creator",
+    "agentId": "custom_agent_012",
+    "httpMethod": "post",
+    "url": "https://api.custom-tools.example.com/v1/transform",
+    "isAvailableToWorkspace": true,
+    "preferredModel": "gpt-4",
+    "shortDescription": "Custom data transformation tool",
+    "isSharable": true,
+    "systemIntegrationIdentifier": null,
+    "apiKeyType": "bearer",
+    "parameter": "custom_api_token",
+    "queryParams": [
+      {
+        "key": "workspace_id",
+        "parameterHint": "Workspace identifier for the custom tool",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "transformation_id",
+        "parameterHint": "Unique identifier for this transformation",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "bodyParams": [
+      {
+        "key": "data",
+        "parameterHint": "Source data to be transformed",
+        "type": "object",
+        "required": true
+      },
+      {
+        "key": "rules",
+        "parameterHint": "Transformation rules configuration",
+        "type": "object",
+        "required": true
+      },
+      {
+        "key": "options",
+        "parameterHint": "Additional transformation options",
+        "type": "object",
+        "required": false
+      }
+    ],
+    "urlParams": [
+      {
+        "key": "version",
+        "parameterHint": "API version for the custom tool",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "createdAt": "2025-07-29T18:50:07.857Z",
+    "updatedAt": "2025-07-29T18:50:07.857Z",
+    "deletedAt": null,
+    "toolConfigurations": [
+      "custom_config_345"
+    ],
+    "questions": [
+      {
+        "id": "q1_transform_type",
+        "question": "What type of transformation do you want to perform?",
+        "keywordInPrompt": "transformation_type",
+        "tools": [
+          "transformation_selector"
+        ]
+      },
+      {
+        "id": "q2_output_format",
+        "question": "In what format should the transformed data be returned?",
+        "keywordInPrompt": "output_format",
+        "tools": [
+          "format_selector"
+        ]
+      }
+    ],
+    "integration": null,
+    "integrationIdentity": null,
+    "customConfiguration": {
+      "transformation_engine": "custom_js_engine",
+      "supported_formats": [
+        "json",
+        "xml",
+        "csv",
+        "yaml"
+      ],
+      "max_data_size": "10MB",
+      "timeout_seconds": 30,
+      "retry_attempts": 3,
+      "error_handling": "graceful_fallback",
+      "logging_level": "detailed",
+      "cache_results": true,
+      "cache_duration": "1hour",
+      "webhook_notifications": {
+        "success": "https://example.com/webhooks/success",
+        "error": "https://example.com/webhooks/error"
+      }
+    },
+    "executionContext": {
+      "environment": "production",
+      "region": "us-east-1",
+      "resource_limits": {
+        "memory": "512MB",
+        "cpu": "0.5 vCPU",
+        "execution_time": "30s"
+      },
+      "security": {
+        "encrypted_at_rest": true,
+        "encrypted_in_transit": true,
+        "access_logs": true
+      }
+    },
+    "customMetadata": {
+      "created_by": "user_custom_creator",
+      "version": "1.2.0",
+      "tags": [
+        "data-transformation",
+        "custom-logic", 
+        "business-rules"
+      ],
+      "documentation_url": "https://example.com/docs/custom-transformer",
+      "support_contact": "support@custom-tools.example.com",
+      "license": "MIT",
+      "dependencies": [
+        "json-schema-validator",
+        "data-mapper-lib",
+        "format-converter"
+      ]
+    }
+  }
+} 

@@ -1,0 +1,154 @@
+{
+  "consolidated_metadata": {
+    "source_file": "examples/agent_graph_example.json",
+    "extraction_timestamp": "2025-07-30T00:04:23Z",
+    "description": "Consolidated overview of all extracted schemas from agent graph",
+    "schema_files_generated": [
+      "examples/agent_graph_minimal_schema.json",
+      "examples/agent_graph_nodes_schema.json",
+      "examples/agent_graph_tools_schema.json"
+    ]
+  },
+  "schemas_summary": {
+    "minimal_schema": {
+      "schema_type": "minimal_schema",
+      "status": "success",
+      "description": "Simplified high-level structure",
+      "top_level_keys": [
+        "graph"
+      ],
+      "complexity": "low",
+      "recommended_for": [
+        "Quick overview",
+        "Initial understanding",
+        "Documentation"
+      ]
+    },
+    "nodes_schema": {
+      "schema_type": "nodes_schema",
+      "status": "success",
+      "description": "Complete node structures and configurations",
+      "total_nodes": 114,
+      "node_types": 4,
+      "unique_fields": 212,
+      "complexity": "high",
+      "recommended_for": [
+        "Node implementation",
+        "Configuration management",
+        "Workflow design"
+      ]
+    },
+    "tools_schema": {
+      "schema_type": "tools_schema",
+      "status": "success",
+      "description": "Complete tool schemas for Beam tools, GPT tools, and integrations",
+      "total_tools": 39,
+      "tool_categories": {
+        "beam_tools": 24,
+        "gpt_tools": 0,
+        "integration_tools": 0,
+        "custom_tools": 15,
+        "unknown_tools": 0
+      },
+      "complexity": "high",
+      "recommended_for": [
+        "Tool development",
+        "Integration setup",
+        "API configuration"
+      ]
+    }
+  },
+  "cross_schema_analysis": {
+    "schema_relationships": {
+      "available_schemas": [
+        "minimal_schema",
+        "nodes_schema",
+        "tools_schema"
+      ],
+      "total_coverage": 3
+    },
+    "common_patterns": [
+      "All schemas include timestamp fields (createdAt, updatedAt)",
+      "ID fields are consistently string type across schemas",
+      "Complex nested objects are common in all schema types",
+      "Configuration objects follow similar patterns"
+    ],
+    "integration_points": [
+      {
+        "connection": "nodes_to_tools",
+        "description": "Nodes reference tools through toolConfiguration.originalTool",
+        "schema_files": [
+          "nodes_schema",
+          "tools_schema"
+        ]
+      },
+      {
+        "connection": "agent_to_nodes",
+        "description": "Agent graphs contain arrays of nodes",
+        "schema_files": [
+          "minimal_schema",
+          "nodes_schema"
+        ]
+      }
+    ]
+  },
+  "usage_recommendations": {
+    "by_use_case": {
+      "getting_started": {
+        "recommended_schema": "minimal_schema",
+        "description": "Start with minimal schema to understand overall structure",
+        "next_steps": [
+          "Review agent_graph_minimal_schema.json",
+          "Understand top-level structure"
+        ]
+      },
+      "implementing_nodes": {
+        "recommended_schema": "nodes_schema",
+        "description": "Use nodes schema for detailed node implementation",
+        "next_steps": [
+          "Review agent_graph_nodes_schema.json",
+          "Study node types and configurations"
+        ]
+      },
+      "tool_development": {
+        "recommended_schema": "tools_schema",
+        "description": "Use tools schema for Beam tools, GPT tools, and integrations",
+        "next_steps": [
+          "Review agent_graph_tools_schema.json",
+          "Focus on specific tool categories"
+        ]
+      },
+      "comprehensive_understanding": {
+        "recommended_schemas": [
+          "minimal_schema",
+          "nodes_schema",
+          "tools_schema"
+        ],
+        "description": "Use all schemas for complete understanding",
+        "next_steps": [
+          "Start with minimal",
+          "Deep-dive into nodes and tools",
+          "Reference consolidated overview"
+        ]
+      }
+    },
+    "by_role": {
+      "developer": [
+        "nodes_schema",
+        "tools_schema"
+      ],
+      "architect": [
+        "minimal_schema",
+        "consolidated_overview"
+      ],
+      "integrator": [
+        "tools_schema",
+        "minimal_schema"
+      ],
+      "documentation_writer": [
+        "minimal_schema",
+        "consolidated_overview"
+      ]
+    }
+  }
+}

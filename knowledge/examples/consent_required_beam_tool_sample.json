@@ -1,0 +1,188 @@
+{
+  "tool_type": "consent_required_beam_tool",
+  "description": "Sample of a Beam tool that requires user consent before execution",
+  "sample": {
+    "toolFunctionName": "beam_consent_action",
+    "toolName": "Consent Required Tool",
+    "iconSrc": "https://example.com/consent-tool-icon.svg",
+    "type": "beam_tool",
+    "isVisibleOnUi": true,
+    "integrationId": "consent-integration-123",
+    "meta": {
+      "payload": "consent_tool_payload",
+      "tool_name": "Consent Required Tool",
+      "function_name": "beam_consent_action",
+      "requires_consent": true,
+      "requires_translation": false,
+      "description": "This tool requires explicit user consent before performing sensitive operations",
+      "required_extracted_args": [
+        "user_data",
+        "operation_type"
+      ],
+      "optional_extracted_args": [
+        "confirmation_message"
+      ],
+      "content": "Tool that handles sensitive user data operations with consent verification",
+      "is_available_to_workspace": true,
+      "type": "beam_tool",
+      "integrationIdentifier": "beam-consent-system",
+      "categories": [
+        "security",
+        "user_management"
+      ],
+      "agentos_categories": [
+        "privacy",
+        "consent"
+      ],
+      "icon_src": "https://example.com/consent-tool-icon.svg",
+      "integration_provider_auth": "oauth2",
+      "integration_provider_executor": "beam_secure_executor",
+      "integration_provider_details": {
+        "request": {
+          "endpoint": "/api/v1/consent-operations",
+          "method": "POST",
+          "query": [
+            "consent_token"
+          ],
+          "body": {
+            "operation": "string",
+            "user_consent": "boolean",
+            "data_scope": "array"
+          },
+          "bypassTLS": false
+        },
+        "response": {
+          "consent_verified": "boolean",
+          "operation_id": "string",
+          "status": "string"
+        }
+      },
+      "preferred_model": "gpt-4",
+      "agent_category": {
+        "id": "security-tools",
+        "title": "Security & Privacy Tools"
+      },
+      "integration_id": "consent-integration-123",
+      "apiKeyType": "bearer",
+      "parameter": "consent_api_key",
+      "customIntegrationId": "custom_consent_integration",
+      "tool_category_id": "privacy_tools",
+      "isActive": true,
+      "agent_categories": [
+        "privacy",
+        "security"
+      ],
+      "required_generated_args": [
+        "consent_request_id",
+        "user_authorization"
+      ],
+      "optional_generated_args": [
+        "audit_trail"
+      ],
+      "is_memory_tool": false,
+      "memory_lookup_instruction": null,
+      "workspace_id": "workspace_consent_123"
+    },
+    "outputId": "consent_tool_output_456",
+    "prompt": "This tool will perform a sensitive operation that requires your explicit consent. Please review the details and confirm your authorization.",
+    "output": {
+      "id": "consent_output_789",
+      "name": "Consent Verification Result",
+      "image": "https://example.com/consent-result-icon.svg",
+      "tools": [
+        "consent_logger",
+        "audit_tracker"
+      ]
+    },
+    "inputParams": [
+      {
+        "paramName": "user_consent",
+        "fillType": "user_input",
+        "question": "Do you consent to this operation accessing your personal data?",
+        "linkParams": null,
+        "linkParamOutputId": null,
+        "paramDescription": "User's explicit consent for the operation",
+        "staticValue": null,
+        "required": true,
+        "dataType": "boolean"
+      },
+      {
+        "paramName": "operation_scope",
+        "fillType": "ai_fill",
+        "question": "What scope of data access is needed for this operation?",
+        "linkParams": {
+          "toolId": "scope_analyzer",
+          "toolFunctionName": "analyze_data_scope",
+          "outputParam": "scope_definition",
+          "outputId": "scope_output_123"
+        },
+        "linkParamOutputId": "scope_link_456",
+        "paramDescription": "Defines the scope of data that will be accessed",
+        "staticValue": null,
+        "required": true,
+        "dataType": "string"
+      }
+    ],
+    "requiresConsent": true,
+    "isMemoryTool": false,
+    "isBackgroundTool": false,
+    "embedding": null,
+    "memoryLookupInstruction": null,
+    "outputParams": [
+      {
+        "paramName": "consent_status",
+        "paramDescription": "Status of the consent verification",
+        "id": "consent_status_param",
+        "agentToolConfigurationId": "consent_config_789"
+      },
+      {
+        "paramName": "operation_result",
+        "paramDescription": "Result of the consented operation",
+        "id": "operation_result_param",
+        "agentToolConfigurationId": "consent_config_789"
+      }
+    ],
+    "isBatchExecutionEnabled": false,
+    "isCodeExecutionEnabled": false,
+    "description": "A Beam tool that requires explicit user consent before performing sensitive operations on user data",
+    "isActive": true,
+    "workspaceId": "workspace_consent_123",
+    "userId": "user_consent_owner",
+    "agentId": "consent_agent_456",
+    "httpMethod": "post",
+    "url": "https://api.beam.studio/v1/consent-operations",
+    "isAvailableToWorkspace": true,
+    "preferredModel": "gpt-4",
+    "shortDescription": "Consent-required tool for sensitive operations",
+    "isSharable": false,
+    "systemIntegrationIdentifier": "beam_consent_system",
+    "apiKeyType": "bearer",
+    "parameter": "consent_api_key",
+    "queryParams": [
+      {
+        "key": "consent_token",
+        "parameterHint": "Token verifying user consent",
+        "type": "string",
+        "required": true
+      }
+    ],
+    "bodyParams": [
+      {
+        "key": "operation_type",
+        "parameterHint": "Type of operation requiring consent",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "user_data_scope",
+        "parameterHint": "Scope of user data to be accessed",
+        "type": "array",
+        "required": true
+      }
+    ],
+    "urlParams": [],
+    "createdAt": "2025-07-29T18:50:07.857Z",
+    "updatedAt": "2025-07-29T18:50:07.857Z",
+    "deletedAt": null
+  }
+} 

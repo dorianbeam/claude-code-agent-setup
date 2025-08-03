@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(cat:*)",
+      "Bash(mkdir:*)",
+      "Bash(dir \"C:\\Users\\dsber\\Code\\Agent Setup v2\\Context-Engineering-Intro\\.claude\\agents\" /b)",
+      "Bash(ls:*)",
+      "Bash(rmdir:*)",
+      "Bash(del process.md)",
+      "Bash(rm:*)",
+      "Bash(cp:*)",
+      "Bash(copy \"C:\\Users\\dsber\\Code\\Agent Setup v2\\burak_reference_logic\\stages\\sop_generation\\sop_generation_prompts.py\" \"C:\\Users\\dsber\\Code\\Agent Setup v2\\knowledge\\prompts\"\")",
+      "Bash(copy:*)",
+      "Bash(python:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  },
+  "dangerouslySkipPermissions": true
+}

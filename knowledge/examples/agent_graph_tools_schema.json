@@ -1,0 +1,3425 @@
+{
+  "schema_metadata": {
+    "extracted_from": "examples/agent_graph_example.json",
+    "extraction_method": "comprehensive_tools_analysis",
+    "description": "Complete schema for all tool types (Beam tools, GPT tools, etc.)",
+    "total_tools_found": 39,
+    "extraction_timestamp": "2025-01-15T00:00:00Z"
+  },
+  "tools_by_category": {
+    "beam_tools": {
+      "count": 24,
+      "analysis": {
+        "category": "beam_tools",
+        "count": 24,
+        "common_fields": [
+          "createdAt",
+          "content",
+          "workspace_id",
+          "shortDescription",
+          "function_name",
+          "integration_id",
+          "is_memory_tool",
+          "id",
+          "type",
+          "agentId",
+          "workspaceId",
+          "deletedAt",
+          "toolConfigurations",
+          "parameter",
+          "requires_translation",
+          "icon_src",
+          "tool_category_id",
+          "isBackgroundTool",
+          "apiKeyType",
+          "isSharable",
+          "agentos_categories",
+          "queryParams",
+          "preferred_model",
+          "description",
+          "required_extracted_args",
+          "isIntegrationConnected",
+          "payload",
+          "integration_provider_auth",
+          "outputParams",
+          "required_generated_args",
+          "toolName",
+          "embedding",
+          "integrationId",
+          "outputId",
+          "isActive",
+          "userId",
+          "output",
+          "optional_extracted_args",
+          "questions",
+          "httpMethod",
+          "isAvailableToWorkspace",
+          "toolFunctionName",
+          "customIntegrationId",
+          "isIntegrationRequired",
+          "optional_generated_args",
+          "meta",
+          "isMemoryTool",
+          "requiresConsent",
+          "inputParams",
+          "iconSrc",
+          "isCodeExecutionEnabled",
+          "preferredModel",
+          "urlParams",
+          "memoryLookupInstruction",
+          "is_available_to_workspace",
+          "categories",
+          "integration",
+          "toolConfiguration",
+          "requires_consent",
+          "updatedAt",
+          "isBatchExecutionEnabled",
+          "integrationCustomAuthParameters",
+          "url",
+          "integrationIdentifier",
+          "isVisibleOnUi",
+          "integrationProvider",
+          "agent_categories",
+          "bodyParams",
+          "memory_lookup_instruction",
+          "systemIntegrationIdentifier",
+          "integration_provider_details",
+          "agent_category",
+          "tool_name",
+          "prompt",
+          "integration_provider_executor"
+        ],
+        "field_frequency": {
+          "toolFunctionName": 13,
+          "toolName": 13,
+          "iconSrc": 13,
+          "type": 24,
+          "isVisibleOnUi": 13,
+          "integrationId": 13,
+          "meta": 13,
+          "outputId": 13,
+          "prompt": 13,
+          "output": 13,
+          "inputParams": 13,
+          "requiresConsent": 13,
+          "isMemoryTool": 13,
+          "isBackgroundTool": 13,
+          "embedding": 13,
+          "memoryLookupInstruction": 13,
+          "outputParams": 13,
+          "isBatchExecutionEnabled": 13,
+          "isCodeExecutionEnabled": 13,
+          "description": 24,
+          "isActive": 24,
+          "workspaceId": 13,
+          "userId": 13,
+          "agentId": 13,
+          "httpMethod": 13,
+          "url": 13,
+          "isAvailableToWorkspace": 13,
+          "preferredModel": 13,
+          "shortDescription": 13,
+          "isSharable": 13,
+          "systemIntegrationIdentifier": 13,
+          "apiKeyType": 24,
+          "parameter": 24,
+          "queryParams": 13,
+          "bodyParams": 13,
+          "urlParams": 13,
+          "createdAt": 13,
+          "updatedAt": 13,
+          "deletedAt": 13,
+          "toolConfigurations": 13,
+          "questions": 13,
+          "integration": 13,
+          "toolConfiguration": 13,
+          "id": 13,
+          "isIntegrationRequired": 2,
+          "isIntegrationConnected": 2,
+          "integrationProvider": 2,
+          "integrationIdentifier": 13,
+          "integrationCustomAuthParameters": 2,
+          "payload": 11,
+          "tool_name": 11,
+          "function_name": 11,
+          "requires_consent": 11,
+          "requires_translation": 11,
+          "required_extracted_args": 11,
+          "optional_extracted_args": 11,
+          "content": 11,
+          "is_available_to_workspace": 11,
+          "categories": 11,
+          "agentos_categories": 11,
+          "icon_src": 11,
+          "integration_provider_auth": 11,
+          "integration_provider_executor": 11,
+          "integration_provider_details": 11,
+          "preferred_model": 11,
+          "agent_category": 11,
+          "integration_id": 11,
+          "customIntegrationId": 11,
+          "tool_category_id": 11,
+          "agent_categories": 11,
+          "required_generated_args": 11,
+          "optional_generated_args": 11,
+          "is_memory_tool": 11,
+          "memory_lookup_instruction": 11,
+          "workspace_id": 11
+        },
+        "tool_subtypes": {
+          "consent_required_beam_tool": 13,
+          "standard_beam_tool": 11
+        },
+        "samples": [
+          {
+            "subtype": "consent_required_beam_tool",
+            "extraction_path": "graph.nodes[0].toolConfiguration.originalTool",
+            "key_fields": {
+              "toolName": "string",
+              "toolFunctionName": "string",
+              "type": "string",
+              "integrationId": "string",
+              "systemIntegrationIdentifier": "string",
+              "description": "string",
+              "httpMethod": "post",
+              "url": "string",
+              "meta": {
+                "type": "beam_tool",
+                "tool_name": "string",
+                "function_name": "string",
+                "description": "string",
+                "requires_consent": true
+              }
+            }
+          },
+          {
+            "subtype": "consent_required_beam_tool",
+            "extraction_path": "graph.nodes[0].toolConfiguration.connection.providerIdentity.actions[0]",
+            "key_fields": {
+              "toolName": "string",
+              "toolFunctionName": "string",
+              "type": "string",
+              "integrationId": "string",
+              "systemIntegrationIdentifier": "string",
+              "description": "string",
+              "httpMethod": "post",
+              "url": "string",
+              "meta": {
+                "type": "beam_tool",
+                "tool_name": "string",
+                "function_name": "string",
+                "description": "string",
+                "requires_consent": true
+              }
+            }
+          },
+          {
+            "subtype": "standard_beam_tool",
+            "extraction_path": "graph.nodes[0].toolConfiguration.connection.providerIdentity.actions[0].meta",
+            "key_fields": {
+              "type": "beam_tool",
+              "description": "string"
+            }
+          }
+        ]
+      }
+    },
+    "gpt_tools": {
+      "count": 0,
+      "analysis": {
+        "category": "gpt_tools",
+        "count": 0,
+        "common_fields": [],
+        "field_frequency": {},
+        "samples": []
+      }
+    },
+    "integration_tools": {
+      "count": 0,
+      "analysis": {
+        "category": "integration_tools",
+        "count": 0,
+        "common_fields": [],
+        "field_frequency": {},
+        "samples": []
+      }
+    },
+    "custom_tools": {
+      "count": 15,
+      "analysis": {
+        "category": "custom_tools",
+        "count": 15,
+        "common_fields": [
+          "createdAt",
+          "integrationProviderId",
+          "id",
+          "deletedAt",
+          "agentId",
+          "isBackgroundTool",
+          "inputParamsData",
+          "outputParam",
+          "connection",
+          "outputParams",
+          "agentGraphNodes",
+          "originalTool",
+          "outputId",
+          "outputParamsData",
+          "toolFunctionName",
+          "isMemoryTool",
+          "requiresConsent",
+          "inputParams",
+          "isCodeExecutionEnabled",
+          "tool",
+          "memoryLookupInstruction",
+          "toolId",
+          "updatedAt",
+          "isBatchExecutionEnabled",
+          "agent"
+        ],
+        "field_frequency": {
+          "originalTool": 2,
+          "toolFunctionName": 15,
+          "integrationProviderId": 2,
+          "outputParams": 2,
+          "inputParams": 2,
+          "outputParamsData": 2,
+          "inputParamsData": 2,
+          "agentId": 2,
+          "requiresConsent": 2,
+          "isBackgroundTool": 2,
+          "isMemoryTool": 2,
+          "isBatchExecutionEnabled": 2,
+          "isCodeExecutionEnabled": 2,
+          "memoryLookupInstruction": 2,
+          "agent": 2,
+          "agentGraphNodes": 2,
+          "connection": 2,
+          "tool": 2,
+          "id": 2,
+          "createdAt": 2,
+          "updatedAt": 2,
+          "deletedAt": 2,
+          "toolId": 13,
+          "outputParam": 13,
+          "outputId": 13
+        },
+        "tool_subtypes": {
+          "generic_custom_tool": 15
+        },
+        "samples": [
+          {
+            "subtype": "generic_custom_tool",
+            "extraction_path": "graph.nodes[0].toolConfiguration",
+            "key_fields": {
+              "toolFunctionName": "string"
+            }
+          },
+          {
+            "subtype": "generic_custom_tool",
+            "extraction_path": "graph.nodes[0].toolConfiguration.inputParamsData[0].linkParams",
+            "key_fields": {
+              "toolFunctionName": "string"
+            }
+          },
+          {
+            "subtype": "generic_custom_tool",
+            "extraction_path": "graph.nodes[0].toolConfiguration.connection.providerIdentity.actions[0].inputParams[0].linkParams",
+            "key_fields": {
+              "toolFunctionName": "string"
+            }
+          }
+        ]
+      }
+    },
+    "unknown_tools": {
+      "count": 0,
+      "analysis": {
+        "category": "unknown_tools",
+        "count": 0,
+        "common_fields": [],
+        "field_frequency": {},
+        "samples": []
+      }
+    }
+  },
+  "comprehensive_schemas": {
+    "beam_tools": {
+      "type": "array",
+      "description": "Schema for beam_tools",
+      "items": {
+        "type": "object",
+        "properties": {
+          "toolFunctionName": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "toolName": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "iconSrc": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "type": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 24,
+            "total_tools": 24
+          },
+          "isVisibleOnUi": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "integrationId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "meta": {
+            "type": "object",
+            "description": "Complex object with 32 fields",
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "outputId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "prompt": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "output": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "name": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "image": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "tools": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "example": [
+                  "string"
+                ]
+              }
+            },
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "inputParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "paramName": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "fillType": {
+                  "type": "string",
+                  "example": "ai_fill",
+                  "max_length": 7
+                },
+                "question": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "linkParams": {
+                  "type": "object",
+                  "properties": {
+                    "toolId": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "toolFunctionName": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "outputParam": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "outputId": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    }
+                  }
+                },
+                "linkParamOutputId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramDescription": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "staticValue": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "required": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "dataType": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                }
+              }
+            },
+            "example": [
+              {
+                "paramName": "string",
+                "fillType": "ai_fill",
+                "question": "string",
+                "linkParams": {
+                  "toolId": "string",
+                  "toolFunctionName": "string",
+                  "outputParam": "string",
+                  "outputId": "string"
+                },
+                "linkParamOutputId": "string",
+                "paramDescription": "string",
+                "staticValue": "string",
+                "required": true,
+                "dataType": "string"
+              }
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "requiresConsent": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isMemoryTool": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isBackgroundTool": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "embedding": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "memoryLookupInstruction": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "outputParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "paramName": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramDescription": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "id": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "agentToolConfigurationId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                }
+              }
+            },
+            "example": [
+              {
+                "paramName": "string",
+                "paramDescription": "string",
+                "id": "string",
+                "agentToolConfigurationId": "string"
+              }
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isBatchExecutionEnabled": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isCodeExecutionEnabled": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "description": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 24,
+            "total_tools": 24
+          },
+          "isActive": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 24,
+            "total_tools": 24
+          },
+          "workspaceId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "userId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "agentId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "httpMethod": {
+            "type": "string",
+            "example": "post",
+            "max_length": 4,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "url": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isAvailableToWorkspace": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "preferredModel": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "shortDescription": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isSharable": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "systemIntegrationIdentifier": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "apiKeyType": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 24,
+            "total_tools": 24
+          },
+          "parameter": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 24,
+            "total_tools": 24
+          },
+          "queryParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "parameterHint": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "type": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "required": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            },
+            "example": [
+              {
+                "key": "string",
+                "parameterHint": "string",
+                "type": "string",
+                "required": true
+              }
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "bodyParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "parameterHint": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "type": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "required": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            },
+            "example": [
+              {
+                "key": "string",
+                "parameterHint": "string",
+                "type": "string",
+                "required": true
+              }
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "urlParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "key": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "parameterHint": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "type": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "required": {
+                  "type": "boolean",
+                  "example": true
+                }
+              }
+            },
+            "example": [
+              {
+                "key": "string",
+                "parameterHint": "string",
+                "type": "string",
+                "required": true
+              }
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.857Z",
+            "max_length": 24,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.857Z",
+            "max_length": 24,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "deletedAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.857Z",
+            "max_length": 24,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "toolConfigurations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "questions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "question": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "keywordInPrompt": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "tools": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "example": [
+                    "string"
+                  ]
+                }
+              }
+            },
+            "example": [
+              {
+                "id": "string",
+                "question": "string",
+                "keywordInPrompt": "string",
+                "tools": [
+                  "string"
+                ]
+              }
+            ],
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "integration": {
+            "type": "object",
+            "description": "Complex object with 26 fields",
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "toolConfiguration": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "id": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "isIntegrationRequired": {
+            "type": "boolean",
+            "example": false,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 24
+          },
+          "isIntegrationConnected": {
+            "type": "boolean",
+            "example": false,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 24
+          },
+          "integrationProvider": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 24
+          },
+          "integrationIdentifier": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 24
+          },
+          "integrationCustomAuthParameters": {
+            "type": "object",
+            "properties": {},
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 24
+          },
+          "payload": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "tool_name": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "function_name": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "requires_consent": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "requires_translation": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "required_extracted_args": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "optional_extracted_args": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "content": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "is_available_to_workspace": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "agentos_categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "icon_src": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "integration_provider_auth": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "integration_provider_executor": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "integration_provider_details": {
+            "type": "object",
+            "properties": {
+              "request": {
+                "type": "object",
+                "properties": {
+                  "endpoint": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "method": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "query": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "example": [
+                      "string"
+                    ]
+                  },
+                  "body": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "bypassTLS": {
+                    "type": "boolean",
+                    "example": true
+                  }
+                }
+              },
+              "response": {
+                "type": "object",
+                "properties": {}
+              }
+            },
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "preferred_model": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "agent_category": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "title": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              }
+            },
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "integration_id": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "customIntegrationId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "tool_category_id": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "agent_categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "required_generated_args": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "optional_generated_args": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "is_memory_tool": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "memory_lookup_instruction": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          },
+          "workspace_id": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 11,
+            "total_tools": 24
+          }
+        }
+      }
+    },
+    "gpt_tools": {
+      "type": "array",
+      "items": {
+        "type": "null"
+      },
+      "description": "No gpt_tools found"
+    },
+    "integration_tools": {
+      "type": "array",
+      "items": {
+        "type": "null"
+      },
+      "description": "No integration_tools found"
+    },
+    "custom_tools": {
+      "type": "array",
+      "description": "Schema for custom_tools",
+      "items": {
+        "type": "object",
+        "properties": {
+          "originalTool": {
+            "type": "object",
+            "description": "Complex object with 49 fields",
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "toolFunctionName": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 15,
+            "total_tools": 15
+          },
+          "integrationProviderId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "outputParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramName": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramDescription": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "agentToolConfigurationId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2025-07-29T18:50:07.857Z",
+                  "max_length": 24
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": "2025-07-29T18:50:07.857Z",
+                  "max_length": 24
+                },
+                "tool": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "inputParams": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "paramName": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "fillType": {
+                        "type": "string",
+                        "example": "ai_fill",
+                        "max_length": 7
+                      },
+                      "agentToolConfigurationId": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "question": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "linkParamOutputId": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "paramDescription": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "staticValue": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "required": {
+                        "type": "boolean",
+                        "example": true
+                      },
+                      "dataType": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2025-07-29T18:50:07.857Z",
+                        "max_length": 24
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2025-07-29T18:50:07.857Z",
+                        "max_length": 24
+                      },
+                      "tool": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "linkOutputParam": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      }
+                    }
+                  },
+                  "example": [
+                    {
+                      "id": "string",
+                      "paramName": "string",
+                      "fillType": "ai_fill",
+                      "agentToolConfigurationId": "string",
+                      "question": "string",
+                      "linkParamOutputId": "string",
+                      "paramDescription": "string",
+                      "staticValue": "string",
+                      "required": true,
+                      "dataType": "string",
+                      "createdAt": "2025-07-29T18:50:07.857Z",
+                      "updatedAt": "2025-07-29T18:50:07.857Z",
+                      "tool": "string",
+                      "linkOutputParam": "string"
+                    }
+                  ]
+                }
+              }
+            },
+            "example": [
+              {
+                "id": "string",
+                "paramName": "string",
+                "paramDescription": "string",
+                "agentToolConfigurationId": "string",
+                "createdAt": "2025-07-29T18:50:07.857Z",
+                "updatedAt": "2025-07-29T18:50:07.857Z",
+                "tool": "string",
+                "inputParams": [
+                  {
+                    "id": "string",
+                    "paramName": "string",
+                    "fillType": "ai_fill",
+                    "agentToolConfigurationId": "string",
+                    "question": "string",
+                    "linkParamOutputId": "string",
+                    "paramDescription": "string",
+                    "staticValue": "string",
+                    "required": true,
+                    "dataType": "string",
+                    "createdAt": "2025-07-29T18:50:07.857Z",
+                    "updatedAt": "2025-07-29T18:50:07.857Z",
+                    "tool": "string",
+                    "linkOutputParam": "string"
+                  }
+                ]
+              }
+            ],
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "inputParams": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramName": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "fillType": {
+                  "type": "string",
+                  "example": "ai_fill",
+                  "max_length": 7
+                },
+                "agentToolConfigurationId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "question": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "linkParamOutputId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramDescription": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "staticValue": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "required": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "dataType": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "createdAt": {
+                  "type": "string",
+                  "example": "2025-07-29T18:50:07.857Z",
+                  "max_length": 24
+                },
+                "updatedAt": {
+                  "type": "string",
+                  "example": "2025-07-29T18:50:07.857Z",
+                  "max_length": 24
+                },
+                "tool": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "linkOutputParam": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                }
+              }
+            },
+            "example": [
+              {
+                "id": "string",
+                "paramName": "string",
+                "fillType": "ai_fill",
+                "agentToolConfigurationId": "string",
+                "question": "string",
+                "linkParamOutputId": "string",
+                "paramDescription": "string",
+                "staticValue": "string",
+                "required": true,
+                "dataType": "string",
+                "createdAt": "2025-07-29T18:50:07.857Z",
+                "updatedAt": "2025-07-29T18:50:07.857Z",
+                "tool": "string",
+                "linkOutputParam": "string"
+              }
+            ],
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "outputParamsData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "paramName": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramDescription": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "id": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "agentToolConfigurationId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                }
+              }
+            },
+            "example": [
+              {
+                "paramName": "string",
+                "paramDescription": "string",
+                "id": "string",
+                "agentToolConfigurationId": "string"
+              }
+            ],
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "inputParamsData": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "paramName": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "fillType": {
+                  "type": "string",
+                  "example": "ai_fill",
+                  "max_length": 7
+                },
+                "question": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "linkParams": {
+                  "type": "object",
+                  "properties": {
+                    "toolId": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "toolFunctionName": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "outputParam": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "outputId": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    }
+                  }
+                },
+                "linkParamOutputId": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "paramDescription": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "staticValue": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "required": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "dataType": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                }
+              }
+            },
+            "example": [
+              {
+                "paramName": "string",
+                "fillType": "ai_fill",
+                "question": "string",
+                "linkParams": {
+                  "toolId": "string",
+                  "toolFunctionName": "string",
+                  "outputParam": "string",
+                  "outputId": "string"
+                },
+                "linkParamOutputId": "string",
+                "paramDescription": "string",
+                "staticValue": "string",
+                "required": true,
+                "dataType": "string"
+              }
+            ],
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "agentId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "requiresConsent": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "isBackgroundTool": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "isMemoryTool": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "isBatchExecutionEnabled": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "isCodeExecutionEnabled": {
+            "type": "boolean",
+            "example": true,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "memoryLookupInstruction": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "agent": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "agentGraphNodes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "string",
+              "max_length": 6
+            },
+            "example": [
+              "string"
+            ],
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "connection": {
+            "type": "object",
+            "properties": {
+              "userId": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "credentialId": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "connectionName": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "integration": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "status": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "integrationId": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "isOAuth2": {
+                "type": "boolean",
+                "example": true
+              },
+              "provider": {
+                "type": "string",
+                "example": "custom",
+                "max_length": 6
+              },
+              "workspace": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "tokenExpiresIn": {
+                "type": "integer",
+                "example": 0
+              },
+              "credentials": {
+                "type": "object",
+                "properties": {}
+              },
+              "agentTrigger": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "example": [
+                  "string"
+                ]
+              },
+              "providerIdentity": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "shortDescription": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "longDescription": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "systemIntegrationIdentifier": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "systemIntegrationProvider": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "customAuthParameters": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "category": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "icon": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "syncModels": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "isPublished": {
+                    "type": "boolean",
+                    "example": true
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
+                  },
+                  "status": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "integrationCategoryId": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "integrationCategory": {
+                    "type": "object",
+                    "properties": {
+                      "title": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "integrations": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "example": [
+                          "string"
+                        ]
+                      },
+                      "customIntegrations": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "authType": {
+                              "type": "string",
+                              "example": "basic",
+                              "max_length": 5
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "description": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "grantType": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "systemIntegrationIdentifier": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "userId": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "integrationCategoryId": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "iconSrc": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "workspaceId": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "privacyPolicyUrl": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "authenticationMeta": {
+                              "type": "object",
+                              "properties": {
+                                "clientId": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "customOAuthUrl": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "clientSecret": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "authorizationUrl": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "accessTokenUrl": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "refreshTokenUrl": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "scopes": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "example": [
+                                    "string"
+                                  ]
+                                },
+                                "apiKeyType": {
+                                  "type": "string",
+                                  "example": "default",
+                                  "max_length": 7
+                                },
+                                "grantType": {
+                                  "type": "string",
+                                  "example": "client_credentials",
+                                  "max_length": 18
+                                },
+                                "parameter": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "clientAuthentication": {
+                                  "type": "string",
+                                  "example": "headers",
+                                  "max_length": 7
+                                }
+                              }
+                            },
+                            "bypassSslVerification": {
+                              "type": "boolean",
+                              "example": true
+                            },
+                            "customHeaders": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "key": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "value": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  }
+                                }
+                              },
+                              "example": [
+                                {
+                                  "key": "string",
+                                  "value": "string"
+                                }
+                              ]
+                            },
+                            "provider": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "integrationId": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                },
+                                "credentialId": {
+                                  "type": "string",
+                                  "example": "string",
+                                  "max_length": 6
+                                }
+                              }
+                            },
+                            "integrationCategory": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "customIntegrationTools": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "string",
+                                "max_length": 6
+                              },
+                              "example": [
+                                "string"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2025-07-29T18:50:07.857Z",
+                              "max_length": 24
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "example": "2025-07-29T18:50:07.857Z",
+                              "max_length": 24
+                            },
+                            "deletedAt": {
+                              "type": "string",
+                              "example": "2025-07-29T18:50:07.857Z",
+                              "max_length": 24
+                            }
+                          }
+                        },
+                        "example": [
+                          {
+                            "authType": "basic",
+                            "name": "string",
+                            "description": "string",
+                            "grantType": "string",
+                            "systemIntegrationIdentifier": "string",
+                            "userId": "string",
+                            "integrationCategoryId": "string",
+                            "iconSrc": "string",
+                            "workspaceId": "string",
+                            "privacyPolicyUrl": "string",
+                            "authenticationMeta": {
+                              "clientId": "string",
+                              "customOAuthUrl": "string",
+                              "clientSecret": "string",
+                              "authorizationUrl": "string",
+                              "accessTokenUrl": "string",
+                              "refreshTokenUrl": "string",
+                              "scopes": [
+                                "string"
+                              ],
+                              "apiKeyType": "default",
+                              "grantType": "client_credentials",
+                              "parameter": "string",
+                              "clientAuthentication": "headers"
+                            },
+                            "bypassSslVerification": true,
+                            "customHeaders": [
+                              {
+                                "key": "string",
+                                "value": "string"
+                              }
+                            ],
+                            "provider": {
+                              "id": "string",
+                              "integrationId": "string",
+                              "credentialId": "string"
+                            },
+                            "integrationCategory": "string",
+                            "customIntegrationTools": [
+                              "string"
+                            ],
+                            "id": "string",
+                            "createdAt": "2025-07-29T18:50:07.857Z",
+                            "updatedAt": "2025-07-29T18:50:07.857Z",
+                            "deletedAt": "2025-07-29T18:50:07.857Z"
+                          }
+                        ]
+                      },
+                      "id": {
+                        "type": "string",
+                        "example": "string",
+                        "max_length": 6
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "example": "2025-07-29T18:50:07.857Z",
+                        "max_length": 24
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "example": "2025-07-29T18:50:07.857Z",
+                        "max_length": 24
+                      },
+                      "deletedAt": {
+                        "type": "string",
+                        "example": "2025-07-29T18:50:07.857Z",
+                        "max_length": 24
+                      }
+                    }
+                  },
+                  "provider": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "actions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "Complex object with 44 fields"
+                    },
+                    "example": [
+                      {
+                        "toolFunctionName": "string",
+                        "toolName": "string",
+                        "iconSrc": "string",
+                        "type": "string",
+                        "isVisibleOnUi": true,
+                        "integrationId": "string",
+                        "meta": {
+                          "payload": "string",
+                          "tool_name": "string",
+                          "function_name": "string",
+                          "requires_consent": true,
+                          "requires_translation": true,
+                          "description": "string",
+                          "required_extracted_args": [
+                            "string"
+                          ],
+                          "optional_extracted_args": [
+                            "string"
+                          ],
+                          "content": "string",
+                          "is_available_to_workspace": true,
+                          "type": "beam_tool",
+                          "integrationIdentifier": "string",
+                          "categories": [
+                            "string"
+                          ],
+                          "agentos_categories": [
+                            "string"
+                          ],
+                          "icon_src": "string",
+                          "integration_provider_auth": "string",
+                          "integration_provider_executor": "string",
+                          "integration_provider_details": {
+                            "request": {
+                              "endpoint": "string",
+                              "method": "string",
+                              "query": [
+                                "string"
+                              ],
+                              "body": {},
+                              "bypassTLS": true
+                            },
+                            "response": {}
+                          },
+                          "preferred_model": "string",
+                          "agent_category": {
+                            "id": "string",
+                            "title": "string"
+                          },
+                          "integration_id": "string",
+                          "apiKeyType": "string",
+                          "parameter": "string",
+                          "customIntegrationId": "string",
+                          "tool_category_id": "string",
+                          "isActive": true,
+                          "agent_categories": [
+                            "string"
+                          ],
+                          "required_generated_args": [
+                            "string"
+                          ],
+                          "optional_generated_args": [
+                            "string"
+                          ],
+                          "is_memory_tool": true,
+                          "memory_lookup_instruction": "string",
+                          "workspace_id": "string"
+                        },
+                        "outputId": "string",
+                        "prompt": "string",
+                        "output": {
+                          "id": "string",
+                          "name": "string",
+                          "image": "string",
+                          "tools": [
+                            "string"
+                          ]
+                        },
+                        "inputParams": [
+                          {
+                            "paramName": "string",
+                            "fillType": "ai_fill",
+                            "question": "string",
+                            "linkParams": {
+                              "toolId": "string",
+                              "toolFunctionName": "string",
+                              "outputParam": "string",
+                              "outputId": "string"
+                            },
+                            "linkParamOutputId": "string",
+                            "paramDescription": "string",
+                            "staticValue": "string",
+                            "required": true,
+                            "dataType": "string"
+                          }
+                        ],
+                        "requiresConsent": true,
+                        "isMemoryTool": true,
+                        "isBackgroundTool": true,
+                        "embedding": "string",
+                        "memoryLookupInstruction": "string",
+                        "outputParams": [
+                          {
+                            "paramName": "string",
+                            "paramDescription": "string",
+                            "id": "string",
+                            "agentToolConfigurationId": "string"
+                          }
+                        ],
+                        "isBatchExecutionEnabled": true,
+                        "isCodeExecutionEnabled": true,
+                        "description": "string",
+                        "isActive": true,
+                        "workspaceId": "string",
+                        "userId": "string",
+                        "agentId": "string",
+                        "httpMethod": "post",
+                        "url": "string",
+                        "isAvailableToWorkspace": true,
+                        "preferredModel": "string",
+                        "shortDescription": "string",
+                        "isSharable": true,
+                        "systemIntegrationIdentifier": "string",
+                        "apiKeyType": "string",
+                        "parameter": "string",
+                        "queryParams": [
+                          {
+                            "key": "string",
+                            "parameterHint": "string",
+                            "type": "string",
+                            "required": true
+                          }
+                        ],
+                        "bodyParams": [
+                          {
+                            "key": "string",
+                            "parameterHint": "string",
+                            "type": "string",
+                            "required": true
+                          }
+                        ],
+                        "urlParams": [
+                          {
+                            "key": "string",
+                            "parameterHint": "string",
+                            "type": "string",
+                            "required": true
+                          }
+                        ],
+                        "createdAt": "2025-07-29T18:50:07.857Z",
+                        "updatedAt": "2025-07-29T18:50:07.857Z",
+                        "deletedAt": "2025-07-29T18:50:07.857Z",
+                        "toolConfigurations": [
+                          "string"
+                        ],
+                        "questions": [
+                          {
+                            "id": "string",
+                            "question": "string",
+                            "keywordInPrompt": "string",
+                            "tools": [
+                              "string"
+                            ]
+                          }
+                        ],
+                        "integration": {
+                          "id": "string",
+                          "name": "string",
+                          "description": "string",
+                          "systemIntegrationIdentifier": "string",
+                          "integrationCategoryId": "string",
+                          "iconSrc": "string",
+                          "type": "integration",
+                          "authType": "string",
+                          "userId": "string",
+                          "workspaceId": "string",
+                          "privacyPolicyUrl": "string",
+                          "shortDescription": "string",
+                          "longDescription": "string",
+                          "systemIntegrationProvider": "string",
+                          "customAuthParameters": {},
+                          "category": "string",
+                          "authenticationMeta": {
+                            "clientId": "string",
+                            "customOAuthUrl": "string",
+                            "clientSecret": "string",
+                            "authorizationUrl": "string",
+                            "accessTokenUrl": "string",
+                            "refreshTokenUrl": "string",
+                            "scopes": [
+                              "string"
+                            ],
+                            "apiKeyType": "default",
+                            "grantType": "client_credentials",
+                            "parameter": "string",
+                            "clientAuthentication": "headers"
+                          },
+                          "syncModels": {},
+                          "isPublished": true,
+                          "attributes": {},
+                          "status": "string",
+                          "customHeaders": {},
+                          "provider": "string",
+                          "providers": [
+                            "string"
+                          ],
+                          "integrationCategory": {
+                            "title": "string",
+                            "integrations": [
+                              "string"
+                            ],
+                            "customIntegrations": [
+                              {
+                                "authType": "basic",
+                                "name": "string",
+                                "description": "string",
+                                "grantType": "string",
+                                "systemIntegrationIdentifier": "string",
+                                "userId": "string",
+                                "integrationCategoryId": "string",
+                                "iconSrc": "string",
+                                "workspaceId": "string",
+                                "privacyPolicyUrl": "string",
+                                "authenticationMeta": {
+                                  "clientId": "string",
+                                  "customOAuthUrl": "string",
+                                  "clientSecret": "string",
+                                  "authorizationUrl": "string",
+                                  "accessTokenUrl": "string",
+                                  "refreshTokenUrl": "string",
+                                  "scopes": [
+                                    "string"
+                                  ],
+                                  "apiKeyType": "default",
+                                  "grantType": "client_credentials",
+                                  "parameter": "string",
+                                  "clientAuthentication": "headers"
+                                },
+                                "bypassSslVerification": true,
+                                "customHeaders": [
+                                  {
+                                    "key": "string",
+                                    "value": "string"
+                                  }
+                                ],
+                                "provider": {
+                                  "id": "string",
+                                  "integrationId": "string",
+                                  "credentialId": "string"
+                                },
+                                "integrationCategory": "string",
+                                "customIntegrationTools": [
+                                  "string"
+                                ],
+                                "id": "string",
+                                "createdAt": "2025-07-29T18:50:07.857Z",
+                                "updatedAt": "2025-07-29T18:50:07.857Z",
+                                "deletedAt": "2025-07-29T18:50:07.857Z"
+                              }
+                            ],
+                            "id": "string",
+                            "createdAt": "2025-07-29T18:50:07.857Z",
+                            "updatedAt": "2025-07-29T18:50:07.857Z",
+                            "deletedAt": "2025-07-29T18:50:07.857Z"
+                          },
+                          "actions": [
+                            "string"
+                          ]
+                        },
+                        "toolConfiguration": "string",
+                        "id": "string"
+                      }
+                    ]
+                  },
+                  "toolsView": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "description": "Complex object with 44 fields"
+                    },
+                    "example": [
+                      {
+                        "toolFunctionName": "string",
+                        "toolName": "string",
+                        "iconSrc": "string",
+                        "type": "string",
+                        "isVisibleOnUi": true,
+                        "integrationId": "string",
+                        "meta": {
+                          "payload": "string",
+                          "tool_name": "string",
+                          "function_name": "string",
+                          "requires_consent": true,
+                          "requires_translation": true,
+                          "description": "string",
+                          "required_extracted_args": [
+                            "string"
+                          ],
+                          "optional_extracted_args": [
+                            "string"
+                          ],
+                          "content": "string",
+                          "is_available_to_workspace": true,
+                          "type": "beam_tool",
+                          "integrationIdentifier": "string",
+                          "categories": [
+                            "string"
+                          ],
+                          "agentos_categories": [
+                            "string"
+                          ],
+                          "icon_src": "string",
+                          "integration_provider_auth": "string",
+                          "integration_provider_executor": "string",
+                          "integration_provider_details": {
+                            "request": {
+                              "endpoint": "string",
+                              "method": "string",
+                              "query": [
+                                "string"
+                              ],
+                              "body": {},
+                              "bypassTLS": true
+                            },
+                            "response": {}
+                          },
+                          "preferred_model": "string",
+                          "agent_category": {
+                            "id": "string",
+                            "title": "string"
+                          },
+                          "integration_id": "string",
+                          "apiKeyType": "string",
+                          "parameter": "string",
+                          "customIntegrationId": "string",
+                          "tool_category_id": "string",
+                          "isActive": true,
+                          "agent_categories": [
+                            "string"
+                          ],
+                          "required_generated_args": [
+                            "string"
+                          ],
+                          "optional_generated_args": [
+                            "string"
+                          ],
+                          "is_memory_tool": true,
+                          "memory_lookup_instruction": "string",
+                          "workspace_id": "string"
+                        },
+                        "outputId": "string",
+                        "prompt": "string",
+                        "output": {
+                          "id": "string",
+                          "name": "string",
+                          "image": "string",
+                          "tools": [
+                            "string"
+                          ]
+                        },
+                        "inputParams": [
+                          {
+                            "paramName": "string",
+                            "fillType": "ai_fill",
+                            "question": "string",
+                            "linkParams": {
+                              "toolId": "string",
+                              "toolFunctionName": "string",
+                              "outputParam": "string",
+                              "outputId": "string"
+                            },
+                            "linkParamOutputId": "string",
+                            "paramDescription": "string",
+                            "staticValue": "string",
+                            "required": true,
+                            "dataType": "string"
+                          }
+                        ],
+                        "requiresConsent": true,
+                        "isMemoryTool": true,
+                        "isBackgroundTool": true,
+                        "embedding": "string",
+                        "memoryLookupInstruction": "string",
+                        "outputParams": [
+                          {
+                            "paramName": "string",
+                            "paramDescription": "string",
+                            "id": "string",
+                            "agentToolConfigurationId": "string"
+                          }
+                        ],
+                        "isBatchExecutionEnabled": true,
+                        "isCodeExecutionEnabled": true,
+                        "description": "string",
+                        "isActive": true,
+                        "workspaceId": "string",
+                        "userId": "string",
+                        "agentId": "string",
+                        "httpMethod": "post",
+                        "url": "string",
+                        "isAvailableToWorkspace": true,
+                        "preferredModel": "string",
+                        "shortDescription": "string",
+                        "isSharable": true,
+                        "systemIntegrationIdentifier": "string",
+                        "apiKeyType": "string",
+                        "parameter": "string",
+                        "queryParams": [
+                          {
+                            "key": "string",
+                            "parameterHint": "string",
+                            "type": "string",
+                            "required": true
+                          }
+                        ],
+                        "bodyParams": [
+                          {
+                            "key": "string",
+                            "parameterHint": "string",
+                            "type": "string",
+                            "required": true
+                          }
+                        ],
+                        "urlParams": [
+                          {
+                            "key": "string",
+                            "parameterHint": "string",
+                            "type": "string",
+                            "required": true
+                          }
+                        ],
+                        "createdAt": "2025-07-29T18:50:07.857Z",
+                        "updatedAt": "2025-07-29T18:50:07.857Z",
+                        "deletedAt": "2025-07-29T18:50:07.857Z",
+                        "toolConfigurations": [
+                          "string"
+                        ],
+                        "questions": [
+                          {
+                            "id": "string",
+                            "question": "string",
+                            "keywordInPrompt": "string",
+                            "tools": [
+                              "string"
+                            ]
+                          }
+                        ],
+                        "integration": {
+                          "id": "string",
+                          "name": "string",
+                          "description": "string",
+                          "systemIntegrationIdentifier": "string",
+                          "integrationCategoryId": "string",
+                          "iconSrc": "string",
+                          "type": "integration",
+                          "authType": "string",
+                          "userId": "string",
+                          "workspaceId": "string",
+                          "privacyPolicyUrl": "string",
+                          "shortDescription": "string",
+                          "longDescription": "string",
+                          "systemIntegrationProvider": "string",
+                          "customAuthParameters": {},
+                          "category": "string",
+                          "authenticationMeta": {
+                            "clientId": "string",
+                            "customOAuthUrl": "string",
+                            "clientSecret": "string",
+                            "authorizationUrl": "string",
+                            "accessTokenUrl": "string",
+                            "refreshTokenUrl": "string",
+                            "scopes": [
+                              "string"
+                            ],
+                            "apiKeyType": "default",
+                            "grantType": "client_credentials",
+                            "parameter": "string",
+                            "clientAuthentication": "headers"
+                          },
+                          "syncModels": {},
+                          "isPublished": true,
+                          "attributes": {},
+                          "status": "string",
+                          "customHeaders": {},
+                          "provider": "string",
+                          "providers": [
+                            "string"
+                          ],
+                          "integrationCategory": {
+                            "title": "string",
+                            "integrations": [
+                              "string"
+                            ],
+                            "customIntegrations": [
+                              {
+                                "authType": "basic",
+                                "name": "string",
+                                "description": "string",
+                                "grantType": "string",
+                                "systemIntegrationIdentifier": "string",
+                                "userId": "string",
+                                "integrationCategoryId": "string",
+                                "iconSrc": "string",
+                                "workspaceId": "string",
+                                "privacyPolicyUrl": "string",
+                                "authenticationMeta": {
+                                  "clientId": "string",
+                                  "customOAuthUrl": "string",
+                                  "clientSecret": "string",
+                                  "authorizationUrl": "string",
+                                  "accessTokenUrl": "string",
+                                  "refreshTokenUrl": "string",
+                                  "scopes": [
+                                    "string"
+                                  ],
+                                  "apiKeyType": "default",
+                                  "grantType": "client_credentials",
+                                  "parameter": "string",
+                                  "clientAuthentication": "headers"
+                                },
+                                "bypassSslVerification": true,
+                                "customHeaders": [
+                                  {
+                                    "key": "string",
+                                    "value": "string"
+                                  }
+                                ],
+                                "provider": {
+                                  "id": "string",
+                                  "integrationId": "string",
+                                  "credentialId": "string"
+                                },
+                                "integrationCategory": "string",
+                                "customIntegrationTools": [
+                                  "string"
+                                ],
+                                "id": "string",
+                                "createdAt": "2025-07-29T18:50:07.857Z",
+                                "updatedAt": "2025-07-29T18:50:07.857Z",
+                                "deletedAt": "2025-07-29T18:50:07.857Z"
+                              }
+                            ],
+                            "id": "string",
+                            "createdAt": "2025-07-29T18:50:07.857Z",
+                            "updatedAt": "2025-07-29T18:50:07.857Z",
+                            "deletedAt": "2025-07-29T18:50:07.857Z"
+                          },
+                          "actions": [
+                            "string"
+                          ]
+                        },
+                        "toolConfiguration": "string",
+                        "id": "string"
+                      }
+                    ]
+                  }
+                }
+              },
+              "integrationIdentity": {
+                "type": "object",
+                "description": "Complex object with 26 fields"
+              },
+              "creator": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "cognitoUserId": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "avatarSrc": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "referralCode": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "role_name": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "workspaceUsers": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "workspaceId": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "userId": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "user": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "workspace": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "iconSrc": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "creatorId": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "creator": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "workspaceUsers": {
+                              "type": "array",
+                              "items": {
+                                "type": "string",
+                                "example": "string",
+                                "max_length": 6
+                              },
+                              "example": [
+                                "string"
+                              ]
+                            },
+                            "workspaceAllowedDomains": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "domain": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "workspaceId": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "workspace": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "example": "2025-07-29T18:50:07.858Z",
+                                    "max_length": 24
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "example": "2025-07-29T18:50:07.858Z",
+                                    "max_length": 24
+                                  },
+                                  "deletedAt": {
+                                    "type": "string",
+                                    "example": "2025-07-29T18:50:07.858Z",
+                                    "max_length": 24
+                                  }
+                                }
+                              },
+                              "example": [
+                                {
+                                  "domain": "string",
+                                  "workspaceId": "string",
+                                  "workspace": "string",
+                                  "id": "string",
+                                  "createdAt": "2025-07-29T18:50:07.858Z",
+                                  "updatedAt": "2025-07-29T18:50:07.858Z",
+                                  "deletedAt": "2025-07-29T18:50:07.858Z"
+                                }
+                              ]
+                            },
+                            "workspaceInvitations": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "avatarSrc": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "name": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "inviteeEmail": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "status": {
+                                    "type": "string",
+                                    "example": "pending",
+                                    "max_length": 7
+                                  },
+                                  "code": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "workspaceId": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "workspace": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "inviterUserId": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "inviter": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "id": {
+                                    "type": "string",
+                                    "example": "string",
+                                    "max_length": 6
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "example": "2025-07-29T18:50:07.858Z",
+                                    "max_length": 24
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "example": "2025-07-29T18:50:07.858Z",
+                                    "max_length": 24
+                                  },
+                                  "deletedAt": {
+                                    "type": "string",
+                                    "example": "2025-07-29T18:50:07.858Z",
+                                    "max_length": 24
+                                  }
+                                }
+                              },
+                              "example": [
+                                {
+                                  "avatarSrc": "string",
+                                  "name": "string",
+                                  "inviteeEmail": "string",
+                                  "status": "pending",
+                                  "code": "string",
+                                  "workspaceId": "string",
+                                  "workspace": "string",
+                                  "inviterUserId": "string",
+                                  "inviter": "string",
+                                  "id": "string",
+                                  "createdAt": "2025-07-29T18:50:07.858Z",
+                                  "updatedAt": "2025-07-29T18:50:07.858Z",
+                                  "deletedAt": "2025-07-29T18:50:07.858Z"
+                                }
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "example": "string",
+                              "max_length": 6
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "example": "2025-07-29T18:50:07.858Z",
+                              "max_length": 24
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "example": "2025-07-29T18:50:07.858Z",
+                              "max_length": 24
+                            },
+                            "deletedAt": {
+                              "type": "string",
+                              "example": "2025-07-29T18:50:07.858Z",
+                              "max_length": 24
+                            }
+                          }
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        },
+                        "deletedAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "workspaceId": "string",
+                        "userId": "string",
+                        "user": "string",
+                        "workspace": {
+                          "name": "string",
+                          "iconSrc": "string",
+                          "creatorId": "string",
+                          "creator": "string",
+                          "workspaceUsers": [
+                            "string"
+                          ],
+                          "workspaceAllowedDomains": [
+                            {
+                              "domain": "string",
+                              "workspaceId": "string",
+                              "workspace": "string",
+                              "id": "string",
+                              "createdAt": "2025-07-29T18:50:07.858Z",
+                              "updatedAt": "2025-07-29T18:50:07.858Z",
+                              "deletedAt": "2025-07-29T18:50:07.858Z"
+                            }
+                          ],
+                          "workspaceInvitations": [
+                            {
+                              "avatarSrc": "string",
+                              "name": "string",
+                              "inviteeEmail": "string",
+                              "status": "pending",
+                              "code": "string",
+                              "workspaceId": "string",
+                              "workspace": "string",
+                              "inviterUserId": "string",
+                              "inviter": "string",
+                              "id": "string",
+                              "createdAt": "2025-07-29T18:50:07.858Z",
+                              "updatedAt": "2025-07-29T18:50:07.858Z",
+                              "deletedAt": "2025-07-29T18:50:07.858Z"
+                            }
+                          ],
+                          "id": "string",
+                          "createdAt": "2025-07-29T18:50:07.858Z",
+                          "updatedAt": "2025-07-29T18:50:07.858Z",
+                          "deletedAt": "2025-07-29T18:50:07.858Z"
+                        },
+                        "id": "string",
+                        "createdAt": "2025-07-29T18:50:07.858Z",
+                        "updatedAt": "2025-07-29T18:50:07.858Z",
+                        "deletedAt": "2025-07-29T18:50:07.858Z"
+                      }
+                    ]
+                  },
+                  "contextFiles": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "example": [
+                      "string"
+                    ]
+                  },
+                  "providers": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "example": "string",
+                      "max_length": 6
+                    },
+                    "example": [
+                      "string"
+                    ]
+                  },
+                  "accessTokens": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "userId": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "label": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "token": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        },
+                        "deletedAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        },
+                        "user": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "id": "string",
+                        "userId": "string",
+                        "label": "string",
+                        "token": "string",
+                        "createdAt": "2025-07-29T18:50:07.858Z",
+                        "deletedAt": "2025-07-29T18:50:07.858Z",
+                        "user": "string"
+                      }
+                    ]
+                  },
+                  "featureFlags": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "isGlobal": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "users": {
+                          "type": "array",
+                          "items": {
+                            "type": "string",
+                            "example": "string",
+                            "max_length": 6
+                          },
+                          "example": [
+                            "string"
+                          ]
+                        },
+                        "id": {
+                          "type": "string",
+                          "example": "string",
+                          "max_length": 6
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        },
+                        "deletedAt": {
+                          "type": "string",
+                          "example": "2025-07-29T18:50:07.858Z",
+                          "max_length": 24
+                        }
+                      }
+                    },
+                    "example": [
+                      {
+                        "name": "string",
+                        "isGlobal": true,
+                        "users": [
+                          "string"
+                        ],
+                        "id": "string",
+                        "createdAt": "2025-07-29T18:50:07.858Z",
+                        "updatedAt": "2025-07-29T18:50:07.858Z",
+                        "deletedAt": "2025-07-29T18:50:07.858Z"
+                      }
+                    ]
+                  },
+                  "id": {
+                    "type": "string",
+                    "example": "string",
+                    "max_length": 6
+                  },
+                  "createdAt": {
+                    "type": "string",
+                    "example": "2025-07-29T18:50:07.858Z",
+                    "max_length": 24
+                  },
+                  "updatedAt": {
+                    "type": "string",
+                    "example": "2025-07-29T18:50:07.858Z",
+                    "max_length": 24
+                  },
+                  "deletedAt": {
+                    "type": "string",
+                    "example": "2025-07-29T18:50:07.858Z",
+                    "max_length": 24
+                  }
+                }
+              },
+              "agentToolConfigurations": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "example": "string",
+                  "max_length": 6
+                },
+                "example": [
+                  "string"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "example": "string",
+                "max_length": 6
+              },
+              "createdAt": {
+                "type": "string",
+                "example": "2025-07-29T18:50:07.858Z",
+                "max_length": 24
+              },
+              "updatedAt": {
+                "type": "string",
+                "example": "2025-07-29T18:50:07.858Z",
+                "max_length": 24
+              },
+              "deletedAt": {
+                "type": "string",
+                "example": "2025-07-29T18:50:07.858Z",
+                "max_length": 24
+              }
+            },
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "tool": {
+            "type": "object",
+            "description": "Complex object with 44 fields",
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "id": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.858Z",
+            "max_length": 24,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.858Z",
+            "max_length": 24,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "deletedAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.858Z",
+            "max_length": 24,
+            "nullable": false,
+            "frequency": 2,
+            "total_tools": 15
+          },
+          "toolId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 15
+          },
+          "outputParam": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 15
+          },
+          "outputId": {
+            "type": "string",
+            "example": "string",
+            "max_length": 6,
+            "nullable": false,
+            "frequency": 13,
+            "total_tools": 15
+          }
+        }
+      }
+    },
+    "unknown_tools": {
+      "type": "array",
+      "items": {
+        "type": "null"
+      },
+      "description": "No unknown_tools found"
+    }
+  }
+}

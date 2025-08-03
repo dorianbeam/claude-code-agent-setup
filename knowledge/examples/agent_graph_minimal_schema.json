@@ -1,0 +1,129 @@
+{
+  "schema_metadata": {
+    "extracted_from": "examples/agent_graph_example.json",
+    "extraction_method": "minimal_essential_fields",
+    "description": "Simplified schema showing essential structure of agent graph",
+    "note": "Complex nested objects have been simplified for readability"
+  },
+  "minimal_schema": {
+    "graph": {
+      "agentId": {
+        "type": "string",
+        "example": "string"
+      },
+      "isActive": {
+        "type": "boolean",
+        "example": true
+      },
+      "nodes": {
+        "type": "array",
+        "items": {
+          "toolConfiguration": {
+            "originalTool": {
+              "type": "object",
+              "description": "Complex nested object (truncated)"
+            },
+            "agentId": {
+              "type": "string",
+              "example": "string"
+            },
+            "connection": {
+              "type": "object",
+              "description": "Complex nested object (truncated)"
+            },
+            "tool": {
+              "type": "object",
+              "description": "Complex nested object (truncated)"
+            },
+            "id": {
+              "type": "string",
+              "example": "string"
+            },
+            "createdAt": {
+              "type": "string",
+              "example": "2025-07-29T18:50:07.858Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "example": "2025-07-29T18:50:07.858Z"
+            }
+          },
+          "nodes": {
+            "type": "array",
+            "items": "string"
+          },
+          "id": {
+            "type": "string",
+            "example": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.858Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.858Z"
+          }
+        }
+      },
+      "agent": {
+        "name": {
+          "type": "string",
+          "example": "string"
+        },
+        "description": {
+          "type": "string",
+          "example": "string"
+        },
+        "config": {
+          "tools": {
+            "type": "array",
+            "items": "string"
+          }
+        },
+        "type": {
+          "type": "string",
+          "example": "beam-os"
+        },
+        "category": {
+          "id": {
+            "type": "string",
+            "example": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.859Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-07-29T18:50:07.859Z"
+          }
+        },
+        "id": {
+          "type": "string",
+          "example": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "example": "2025-07-29T18:50:07.860Z"
+        },
+        "updatedAt": {
+          "type": "string",
+          "example": "2025-07-29T18:50:07.860Z"
+        }
+      },
+      "id": {
+        "type": "string",
+        "example": "string"
+      },
+      "createdAt": {
+        "type": "string",
+        "example": "2025-07-29T18:50:07.860Z"
+      },
+      "updatedAt": {
+        "type": "string",
+        "example": "2025-07-29T18:50:07.860Z"
+      }
+    }
+  }
+}

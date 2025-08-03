@@ -1,0 +1,237 @@
+{
+  "tool_type": "standard_beam_tool",
+  "description": "Sample of a standard Beam tool that does not require user consent",
+  "sample": {
+    "toolFunctionName": "beam_standard_action",
+    "toolName": "Standard Processing Tool",
+    "iconSrc": "https://example.com/standard-tool-icon.svg",
+    "type": "beam_tool",
+    "isVisibleOnUi": true,
+    "integrationId": "standard-integration-456",
+    "meta": {
+      "payload": "standard_tool_payload",
+      "tool_name": "Standard Processing Tool",
+      "function_name": "beam_standard_action",
+      "requires_consent": false,
+      "requires_translation": false,
+      "description": "Standard Beam tool for general data processing and workflow automation",
+      "required_extracted_args": [
+        "input_data",
+        "processing_type"
+      ],
+      "optional_extracted_args": [
+        "output_format",
+        "metadata"
+      ],
+      "content": "Tool for standard data processing operations without sensitive data access",
+      "is_available_to_workspace": true,
+      "type": "beam_tool",
+      "integrationIdentifier": "beam-standard-system",
+      "categories": [
+        "data_processing",
+        "automation"
+      ],
+      "agentos_categories": [
+        "workflow",
+        "processing"
+      ],
+      "icon_src": "https://example.com/standard-tool-icon.svg",
+      "integration_provider_auth": "api_key",
+      "integration_provider_executor": "beam_standard_executor",
+      "integration_provider_details": {
+        "request": {
+          "endpoint": "/api/v1/standard-operations",
+          "method": "POST",
+          "query": [
+            "operation_id"
+          ],
+          "body": {
+            "data": "object",
+            "operation_type": "string",
+            "parameters": "object"
+          },
+          "bypassTLS": false
+        },
+        "response": {
+          "processed_data": "object",
+          "operation_id": "string",
+          "status": "string",
+          "timestamp": "string"
+        }
+      },
+      "preferred_model": "gpt-3.5-turbo",
+      "agent_category": {
+        "id": "processing-tools",
+        "title": "Data Processing Tools"
+      },
+      "integration_id": "standard-integration-456",
+      "apiKeyType": "header",
+      "parameter": "standard_api_key",
+      "customIntegrationId": null,
+      "tool_category_id": "processing_tools",
+      "isActive": true,
+      "agent_categories": [
+        "automation",
+        "processing"
+      ],
+      "required_generated_args": [
+        "operation_id",
+        "timestamp"
+      ],
+      "optional_generated_args": [
+        "execution_context"
+      ],
+      "is_memory_tool": true,
+      "memory_lookup_instruction": "Retrieve similar processing operations from memory",
+      "workspace_id": "workspace_standard_456"
+    },
+    "outputId": "standard_tool_output_789",
+    "prompt": "This tool will process your data according to the specified parameters.",
+    "output": {
+      "id": "standard_output_012",
+      "name": "Processing Result",
+      "image": "https://example.com/processing-result-icon.svg",
+      "tools": [
+        "data_validator",
+        "result_formatter"
+      ]
+    },
+    "inputParams": [
+      {
+        "paramName": "input_data",
+        "fillType": "ai_fill",
+        "question": "What data should be processed?",
+        "linkParams": {
+          "toolId": "data_source",
+          "toolFunctionName": "get_data",
+          "outputParam": "data_payload",
+          "outputId": "data_output_456"
+        },
+        "linkParamOutputId": "data_link_789",
+        "paramDescription": "The input data to be processed",
+        "staticValue": null,
+        "required": true,
+        "dataType": "object"
+      },
+      {
+        "paramName": "processing_options",
+        "fillType": "static",
+        "question": null,
+        "linkParams": null,
+        "linkParamOutputId": null,
+        "paramDescription": "Configuration options for processing",
+        "staticValue": {
+          "format": "json",
+          "validation": true,
+          "compression": false
+        },
+        "required": false,
+        "dataType": "object"
+      }
+    ],
+    "requiresConsent": false,
+    "isMemoryTool": true,
+    "isBackgroundTool": true,
+    "embedding": "processing_tool_embeddings",
+    "memoryLookupInstruction": "Search for similar data processing operations and their results",
+    "outputParams": [
+      {
+        "paramName": "processed_result",
+        "paramDescription": "The result of the data processing operation",
+        "id": "processed_result_param",
+        "agentToolConfigurationId": "standard_config_012"
+      },
+      {
+        "paramName": "processing_metadata",
+        "paramDescription": "Metadata about the processing operation",
+        "id": "metadata_param",
+        "agentToolConfigurationId": "standard_config_012"
+      }
+    ],
+    "isBatchExecutionEnabled": true,
+    "isCodeExecutionEnabled": true,
+    "description": "A standard Beam tool for general data processing and workflow automation without consent requirements",
+    "isActive": true,
+    "workspaceId": "workspace_standard_456",
+    "userId": "user_standard_owner",
+    "agentId": "standard_agent_789",
+    "httpMethod": "post",
+    "url": "https://api.beam.studio/v1/standard-operations",
+    "isAvailableToWorkspace": true,
+    "preferredModel": "gpt-3.5-turbo",
+    "shortDescription": "Standard tool for data processing",
+    "isSharable": true,
+    "systemIntegrationIdentifier": "beam_standard_system",
+    "apiKeyType": "header",
+    "parameter": "standard_api_key",
+    "queryParams": [
+      {
+        "key": "operation_id",
+        "parameterHint": "Unique identifier for the processing operation",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "workspace_id",
+        "parameterHint": "Workspace identifier",
+        "type": "string",
+        "required": false
+      }
+    ],
+    "bodyParams": [
+      {
+        "key": "data",
+        "parameterHint": "Data to be processed",
+        "type": "object",
+        "required": true
+      },
+      {
+        "key": "operation_type",
+        "parameterHint": "Type of processing operation",
+        "type": "string",
+        "required": true
+      },
+      {
+        "key": "parameters",
+        "parameterHint": "Additional processing parameters",
+        "type": "object",
+        "required": false
+      }
+    ],
+    "urlParams": [],
+    "createdAt": "2025-07-29T18:50:07.857Z",
+    "updatedAt": "2025-07-29T18:50:07.857Z",
+    "deletedAt": null,
+    "toolConfigurations": [
+      "standard_config_012"
+    ],
+    "questions": [
+      {
+        "id": "q1_data_format",
+        "question": "What format should the output data be in?",
+        "keywordInPrompt": "output_format",
+        "tools": [
+          "format_converter"
+        ]
+      }
+    ],
+    "integration": {
+      "id": "beam_standard_integration",
+      "name": "Beam Standard Processing",
+      "description": "Standard data processing integration for Beam tools",
+      "systemIntegrationIdentifier": "beam_standard_system",
+      "integrationCategoryId": "processing_category",
+      "iconSrc": "https://example.com/beam-integration-icon.svg",
+      "type": "integration",
+      "authType": "api_key",
+      "userId": "user_standard_owner",
+      "workspaceId": "workspace_standard_456",
+      "privacyPolicyUrl": "https://beam.studio/privacy",
+      "shortDescription": "Standard processing integration",
+      "longDescription": "Comprehensive integration for standard data processing operations",
+      "systemIntegrationProvider": "beam_studio",
+      "customAuthParameters": {},
+      "category": "data_processing"
+    }
+  }
+} 
