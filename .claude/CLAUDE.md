@@ -14,18 +14,31 @@ This system creates multi-agent workflows from business process descriptions usi
 **Output**: Folder structure ready for subsequent steps
 
 ### Step 1: SOP Generation
-**Purpose**: Convert process description into Standard Operating Procedure
+**Purpose**: Convert process description into Standard Operating Procedure with integration availability assessment
 
 **Input**: 
 - Agent details and capabilities
-- Business process descriptionfrom exis
+- Business process description
+- Available integration tools in `knowledge/tools/` folder
 
 **Actions**:
 1. Use SOP generation prompt from `knowledge/prompts/sop_generation_prompts.py`
 2. Generate expert reasoning (minimum 25 sentences)
-3. Create structured SOP with all required elements
+3. **Review existing integrations**: Scan `knowledge/tools/` folder to identify available integration tools
+4. **Assess integration gaps**: Compare required integrations from process description against available tools
+5. **Escalate missing integrations**: If critical integrations are unavailable, trigger human escalation workflow
+6. Create structured SOP with all required elements, marking integration availability status
 
 **Output**: Save `sop.md` in main agent graph folder
+
+**Integration Review Process**:
+- **Available Integrations**: Mark steps that can use existing tools from `knowledge/tools/`
+- **Missing Integrations**: Flag steps requiring unavailable integrations
+- **Escalation Trigger**: When critical integrations are missing, escalate to human for:
+  - Tool procurement decisions
+  - Alternative workflow paths
+  - Manual process approval
+- **Fallback Strategies**: Document alternative approaches when integrations are unavailable
 
 **SOP Structure Requirements**:
 - Trigger Events
@@ -61,11 +74,11 @@ This system creates multi-agent workflows from business process descriptions usi
 
 **Input**: 
 - Graph concept from Step 2
-- Available integration schemas in `tools/` folder
+- Available integration schemas in `knowledge/tools/` folder
 
 **Actions**:
 1. Identify nodes with `tool_category: "integration"`
-2. Look up matching tools in `tools/` folder based on action_type
+2. Look up matching tools in `knowledge/tools/` folder based on action_type
 3. For each match:
    - Copy integration action schema
    - Save as individual node file in `nodes/` folder
@@ -74,18 +87,69 @@ This system creates multi-agent workflows from business process descriptions usi
 **Output**: Integration node files in `nodes/` folder
 
 **Integration Tool Format**:
+Based on `standard_beam_tool_sample.json` schema, each integration node contains:
 ```json
 {
-  "node_id": "step_id",
-  "tool_name": "tool_name", 
-  "tool_description": "description",
-  "tool_type": "integration",
-  "action_type": "read|create|update|delete",
-  "integration_name": "service_name",
-  "input_parameters": [],
-  "output_parameters": []
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "integration_action_name",
+      "toolName": "Integration Tool Display Name",
+      "type": "beam_tool",
+      "integrationId": "integration-uuid",
+      "meta": {
+        "tool_name": "Integration Tool Display Name",
+        "function_name": "integration_action_name",
+        "requires_consent": false,
+        "action_type": "read|create|update|delete",
+        "integration_name": "service_name",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/endpoint",
+            "method": "GET|POST|PUT|DELETE",
+            "query": ["param1", "param2"],
+            "body": {"field": "type"}
+          },
+          "response": {
+            "data": "object",
+            "status": "string"
+          }
+        },
+        "integration_provider_auth": "api_key|oauth2|bearer",
+        "apiKeyType": "header|query",
+        "parameter": "auth_parameter_name"
+      },
+      "inputParams": [
+        {
+          "paramName": "input_field",
+          "fillType": "ai_fill|user_input|static",
+          "question": "What data should be processed?",
+          "paramDescription": "Description of input parameter",
+          "required": true,
+          "dataType": "string|object|array"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "result_field", 
+          "paramDescription": "Description of output parameter",
+          "id": "output_param_id"
+        }
+      ]
+    },
+    "agentId": "agent_uuid",
+    "id": "node_configuration_uuid"
+  },
+  "nodes": ["connected_node_ids"],
+  "id": "node_uuid"
 }
 ```
+
+**Key Integration Fields**:
+- `toolConfiguration.originalTool` - Complete beam_tool definition
+- `meta.integration_provider_details` - API endpoint and authentication specs
+- `inputParams`/`outputParams` - Parameter schemas with validation
+- `integration_provider_auth` - Authentication method (api_key, oauth2, bearer)
+- Authentication parameters and API configuration details
 
 ### Step 4: Prompt Generation
 **Purpose**: Generate prompts for all non-integration nodes
@@ -105,18 +169,65 @@ This system creates multi-agent workflows from business process descriptions usi
 **Output**: Prompt node files in `nodes/` folder
 
 **Prompt Tool Format**:
+Based on `generic_custom_tool_sample.json` schema, each prompt node contains:
 ```json
 {
-  "node_id": "step_id",
-  "tool_name": "tool_name",
-  "tool_description": "description", 
-  "tool_type": "prompt",
-  "action_type": "generation|decision|extraction|verification",
-  "prompt": "LLM prompt text with instructions",
-  "input_parameters": [],
-  "output_parameters": []
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "custom_prompt_processor",
+      "toolName": "AI Processing Tool Name",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "Detailed LLM prompt with specific instructions for the action_type:\n- For 'generation': Create content based on provided context\n- For 'decision': Analyze data and make reasoned decisions\n- For 'extraction': Extract specific information from documents\n- For 'verification': Validate and check data accuracy",
+      "inputParams": [
+        {
+          "paramName": "input_data",
+          "fillType": "ai_fill|user_input|static",
+          "question": "What data should be processed?",
+          "paramDescription": "Input data for AI processing",
+          "required": true,
+          "dataType": "string|object|array"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "processed_result",
+          "paramDescription": "Result of AI processing operation",
+          "id": "result_param_id"
+        }
+      ],
+      "preferredModel": "gpt-4|gpt-3.5-turbo",
+      "description": "Custom tool for AI-powered processing operations"
+    },
+    "agentId": "agent_uuid", 
+    "id": "node_configuration_uuid"
+  },
+  "nodes": ["connected_node_ids"],
+  "id": "node_uuid",
+  "customConfiguration": {
+    "action_type": "generation|decision|extraction|verification",
+    "max_tokens": 2000,
+    "temperature": 0.7,
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "512MB",
+      "execution_time": "30s"
+    }
+  }
 }
 ```
+
+**Key Prompt Tool Fields**:
+- `toolConfiguration.originalTool.prompt` - Complete LLM prompt with instructions
+- `customConfiguration.action_type` - Type of AI operation (generation/decision/extraction/verification) 
+- `preferredModel` - LLM model selection (gpt-4, gpt-3.5-turbo)
+- `executionContext` - Resource limits and environment configuration
+- Model parameters (max_tokens, temperature) for fine-tuned responses
 
 ### Step 5: Graph Assembly
 **Purpose**: Assemble complete agent graph from all components
@@ -189,6 +300,46 @@ The final agent graph is assembled programmatically by reading all individual no
 - `decision` - Decision making/reasoning
 - `extraction` - Data extraction from documents
 - `verification` - Data validation/checking
+
+## Human Escalation Process
+
+### Escalation Triggers
+The system escalates to human intervention when:
+
+1. **Missing Critical Integrations**: Required integrations for core business processes are unavailable
+2. **Tool Gaps**: No suitable tools exist for essential SOP steps  
+3. **Authentication Issues**: Integration tools require credentials or permissions not available
+4. **Compliance Requirements**: Business processes require human approval or oversight
+5. **Complex Decision Points**: Logic too complex for automated decision-making
+
+### Escalation Workflow
+
+**Step 1: Gap Detection**
+- During SOP generation, identify missing integrations by comparing required vs. available tools
+- Flag steps that cannot be automated with current tool inventory
+- Assess business impact: Critical, High, Medium, Low
+
+**Step 2: Escalation Notification**
+- Generate human-readable summary of missing tools and their business impact
+- Include suggested alternatives or workarounds if available
+- Provide timeline implications for tool procurement vs. manual processes
+
+**Step 3: Human Decision Points**
+- **Proceed with gaps**: Accept manual processes for missing integrations
+- **Acquire tools**: Pause workflow generation pending tool procurement
+- **Alternative workflows**: Redesign process to use available tools
+- **Hybrid approach**: Automate where possible, manual for gaps
+
+**Step 4: Documentation**
+- Record decisions and rationale for future reference
+- Update process documentation with approved manual steps or tool alternatives
+- Create follow-up tasks for tool procurement if applicable
+
+### Escalation Outputs
+- **Decision Log**: Record of human decisions and reasoning
+- **Modified SOP**: Updated process reflecting human-approved approach
+- **Tool Acquisition Plan**: List of tools to procure with business justification
+- **Manual Process Documentation**: Detailed steps for human-performed tasks
 
 ## File Organization
 
