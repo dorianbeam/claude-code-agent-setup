@@ -1,0 +1,84 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "salesforce_update_customer",
+      "toolName": "Salesforce Customer Record Update",
+      "type": "beam_tool",
+      "integrationId": "salesforce-crm-integration-missing",
+      "meta": {
+        "tool_name": "Salesforce Customer Record Update",
+        "function_name": "salesforce_update_customer",
+        "requires_consent": false,
+        "action_type": "update",
+        "integration_name": "salesforce_crm",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/services/data/v57.0/sobjects/Contact/{contact_id}",
+            "method": "PATCH",
+            "query": [],
+            "body": {
+              "LastSupportDate__c": "string",
+              "LastSupportIssue__c": "string",
+              "LastResolution__c": "string",
+              "SupportTicketHistory__c": "string"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "update_status": "string",
+            "record_id": "string"
+          }
+        },
+        "integration_provider_auth": "oauth2",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "customer_id",
+          "fillType": "ai_fill",
+          "question": "What is the customer's CRM ID?",
+          "paramDescription": "Customer ID from CRM lookup",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "resolution_details",
+          "fillType": "ai_fill",
+          "question": "What are the resolution details to record?",
+          "paramDescription": "Complete resolution information for CRM",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "ticket_information",
+          "fillType": "ai_fill",
+          "question": "What is the ticket information for history?",
+          "paramDescription": "Ticket ID and support interaction details",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "update_confirmation",
+          "paramDescription": "CRM update status and confirmation",
+          "id": "update_confirmation_param"
+        },
+        {
+          "paramName": "customer_record_id",
+          "paramDescription": "Updated customer record identifier",
+          "id": "customer_record_id_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_13_config_uuid"
+  },
+  "nodes": ["step_14_mark_resolved"],
+  "id": "step_13_update_crm",
+  "integration_status": "MISSING",
+  "required_integration": "Salesforce CRM",
+  "fallback_action": "Manual CRM record update required"
+}

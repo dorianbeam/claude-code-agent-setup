@@ -1,0 +1,78 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "zendesk_monitor_ticket_progress",
+      "toolName": "Human Agent Progress Monitor",
+      "type": "beam_tool",
+      "integrationId": "zendesk-ticketing-integration-missing",
+      "meta": {
+        "tool_name": "Human Agent Progress Monitor",
+        "function_name": "zendesk_monitor_ticket_progress",
+        "requires_consent": false,
+        "action_type": "read",
+        "integration_name": "zendesk_ticketing",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v2/tickets/{ticket_id}/audits.json",
+            "method": "GET",
+            "query": ["include", "sort_order"],
+            "body": null
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "ticket_status": "string",
+            "agent_activity": "array",
+            "resolution_progress": "object"
+          }
+        },
+        "integration_provider_auth": "api_key",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "escalated_ticket_id",
+          "fillType": "ai_fill",
+          "question": "What is the escalated ticket ID to monitor?",
+          "paramDescription": "Ticket ID that was escalated to human agent",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "monitoring_interval",
+          "fillType": "static",
+          "question": null,
+          "paramDescription": "How often to check ticket progress",
+          "required": true,
+          "dataType": "string",
+          "staticValue": "4 hours"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "ticket_progress",
+          "paramDescription": "Current status and progress of escalated ticket",
+          "id": "ticket_progress_param"
+        },
+        {
+          "paramName": "human_agent_activity",
+          "paramDescription": "Activity and updates from assigned human agent",
+          "id": "human_agent_activity_param"
+        },
+        {
+          "paramName": "resolution_status",
+          "paramDescription": "Whether ticket has been resolved by human agent",
+          "id": "resolution_status_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_16_config_uuid"
+  },
+  "nodes": ["step_15_schedule_followup", "human_escalation_endpoint"],
+  "id": "step_16_monitor_human",
+  "integration_status": "MISSING",
+  "required_integration": "Zendesk Ticketing System",
+  "fallback_action": "Manual ticket progress monitoring required"
+}

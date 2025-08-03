@@ -1,0 +1,86 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "email_system_schedule_followup",
+      "toolName": "Automated Follow-up Scheduler",
+      "type": "beam_tool",
+      "integrationId": "email-system-integration-missing",
+      "meta": {
+        "tool_name": "Automated Follow-up Scheduler",
+        "function_name": "email_system_schedule_followup",
+        "requires_consent": false,
+        "action_type": "create",
+        "integration_name": "email_system",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/scheduled-messages",
+            "method": "POST",
+            "query": [],
+            "body": {
+              "recipient": "string",
+              "subject": "string",
+              "body": "string",
+              "schedule_time": "string",
+              "ticket_reference": "string"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "schedule_id": "string",
+            "delivery_time": "string"
+          }
+        },
+        "integration_provider_auth": "oauth2",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "customer_email",
+          "fillType": "ai_fill",
+          "question": "What is the customer's email for follow-up?",
+          "paramDescription": "Customer email address for satisfaction follow-up",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "ticket_details",
+          "fillType": "ai_fill",
+          "question": "What are the ticket details for follow-up reference?",
+          "paramDescription": "Ticket ID and resolution details for follow-up",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "follow_up_delay",
+          "fillType": "static",
+          "question": null,
+          "paramDescription": "Time delay for follow-up (48 hours per business rule)",
+          "required": true,
+          "dataType": "string",
+          "staticValue": "48 hours"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "schedule_confirmation",
+          "paramDescription": "Follow-up scheduling confirmation and details",
+          "id": "schedule_confirmation_param"
+        },
+        {
+          "paramName": "followup_schedule_id",
+          "paramDescription": "Unique identifier for scheduled follow-up",
+          "id": "followup_schedule_id_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_15_config_uuid"
+  },
+  "nodes": ["process_complete"],
+  "id": "step_15_schedule_followup",
+  "integration_status": "MISSING",
+  "required_integration": "Email System with Scheduling",
+  "fallback_action": "Manual follow-up reminder creation required"
+}

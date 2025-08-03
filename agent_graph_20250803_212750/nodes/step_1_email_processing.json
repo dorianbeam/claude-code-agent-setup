@@ -1,0 +1,70 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "email_system_read_message",
+      "toolName": "Email System Message Reader",
+      "type": "beam_tool",
+      "integrationId": "email-system-integration-missing",
+      "meta": {
+        "tool_name": "Email System Message Reader",
+        "function_name": "email_system_read_message",
+        "requires_consent": false,
+        "action_type": "read",
+        "integration_name": "email_system",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/messages/incoming",
+            "method": "GET",
+            "query": ["message_id", "folder"],
+            "body": null
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "message_content": "string",
+            "sender": "string",
+            "subject": "string"
+          }
+        },
+        "integration_provider_auth": "oauth2",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "message_source",
+          "fillType": "static", 
+          "question": null,
+          "paramDescription": "Source folder for support emails",
+          "required": true,
+          "dataType": "string",
+          "staticValue": "support@company.com"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "email_content",
+          "paramDescription": "Complete email message content and metadata",
+          "id": "email_content_param"
+        },
+        {
+          "paramName": "sender_email",
+          "paramDescription": "Customer email address",
+          "id": "sender_email_param"
+        },
+        {
+          "paramName": "email_subject",
+          "paramDescription": "Email subject line",
+          "id": "subject_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_1_config_uuid"
+  },
+  "nodes": ["step_2_customer_lookup"],
+  "id": "step_1_email_processing",
+  "integration_status": "MISSING",
+  "required_integration": "Email System (Gmail/Outlook)",
+  "fallback_action": "Manual email review required"
+}

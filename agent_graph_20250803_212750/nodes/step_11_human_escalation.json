@@ -1,0 +1,84 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "zendesk_slack_escalation",
+      "toolName": "Human Agent Escalation System",
+      "type": "beam_tool",
+      "integrationId": "zendesk-slack-integration-missing",
+      "meta": {
+        "tool_name": "Human Agent Escalation System",
+        "function_name": "zendesk_slack_escalation",
+        "requires_consent": false,
+        "action_type": "update",
+        "integration_name": "zendesk_slack_combined",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v2/tickets/{ticket_id}/assign",
+            "method": "PUT",
+            "query": [],
+            "body": {
+              "assignee_id": "string",
+              "status": "string",
+              "priority": "string",
+              "internal_note": "string"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "assignment_status": "string",
+            "notification_sent": "boolean"
+          }
+        },
+        "integration_provider_auth": "api_key",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "ticket_details",
+          "fillType": "ai_fill",
+          "question": "What are the complete ticket details for escalation?",
+          "paramDescription": "Ticket ID, customer info, and issue details",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "escalation_reason",
+          "fillType": "ai_fill",
+          "question": "What is the reason for human escalation?",
+          "paramDescription": "Specific reason requiring human intervention",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "issue_category",
+          "fillType": "ai_fill",
+          "question": "What is the issue category for agent routing?",
+          "paramDescription": "Issue category for appropriate agent assignment",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "escalation_status",
+          "paramDescription": "Status of escalation and agent assignment",
+          "id": "escalation_status_param"
+        },
+        {
+          "paramName": "assigned_agent",
+          "paramDescription": "Details of assigned human agent",
+          "id": "assigned_agent_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_11_config_uuid"
+  },
+  "nodes": ["step_16_monitor_human"],
+  "id": "step_11_human_escalation",
+  "integration_status": "MISSING",
+  "required_integration": "Zendesk + Slack Integration",
+  "fallback_action": "Manual agent assignment and notification required"
+}

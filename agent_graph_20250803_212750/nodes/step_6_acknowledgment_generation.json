@@ -1,0 +1,73 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "custom_acknowledgment_generator",
+      "toolName": "Customer Acknowledgment Email Generator",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are an expert customer service email writer. Generate a professional, personalized acknowledgment email for a customer support ticket.\n\n**Email Requirements:**\n- Professional and friendly tone\n- Personalized with customer name\n- Include ticket ID for reference\n- Set clear response time expectations\n- Provide next steps information\n- Include company signature and contact info\n- Address customer's specific issue category\n\n**Response Time Guidelines:**\n- HIGH priority: \"within 1 hour\"\n- MEDIUM priority: \"within 2 hours\" \n- LOW priority: \"within 4 hours\"\n\n**Email Structure:**\n1. **Greeting**: Personalized greeting with customer name\n2. **Acknowledgment**: Confirm receipt of their request\n3. **Ticket Info**: Provide ticket ID and reference\n4. **Response Time**: Set clear expectations based on priority\n5. **Next Steps**: Explain what happens next\n6. **Contact Info**: Provide additional support options\n7. **Signature**: Professional company signature\n\n**Instructions:**\n1. Use the customer's name for personalization\n2. Reference their specific issue category appropriately\n3. Match the response time to their assigned priority\n4. Maintain professional, helpful tone throughout\n5. Include all required elements in proper structure\n\n**Output the email in this format:**\n```json\n{\n  \"email_subject\": \"Support Ticket Confirmation - [Ticket ID]\",\n  \"email_body\": \"Complete formatted email content\",\n  \"priority_mentioned\": \"HIGH/MEDIUM/LOW\",\n  \"response_time_stated\": \"Specific time commitment made\"\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "customer_name",
+          "fillType": "ai_fill",
+          "question": "What is the customer's name?",
+          "paramDescription": "Customer name for personalization",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "ticket_id",
+          "fillType": "ai_fill",
+          "question": "What is the generated ticket ID?",
+          "paramDescription": "Unique ticket identifier from creation step",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "priority_info",
+          "fillType": "ai_fill",
+          "question": "What is the priority assessment and response time?",
+          "paramDescription": "Priority level and response time from assessment",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "issue_category",
+          "fillType": "ai_fill",
+          "question": "What is the issue category?",
+          "paramDescription": "Issue classification for appropriate messaging",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "acknowledgment_email",
+          "paramDescription": "Complete acknowledgment email content",
+          "id": "acknowledgment_email_param"
+        }
+      ],
+      "preferredModel": "gpt-4",
+      "description": "AI-powered customer acknowledgment email generation tool"
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_6_config_uuid"
+  },
+  "nodes": ["step_7_send_acknowledgment"],
+  "id": "step_6_acknowledgment_generation",
+  "customConfiguration": {
+    "action_type": "generation",
+    "max_tokens": 1500,
+    "temperature": 0.4,
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "512MB",
+      "execution_time": "30s"
+    }
+  }
+}

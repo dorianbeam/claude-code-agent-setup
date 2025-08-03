@@ -1,0 +1,71 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "knowledge_base_search",
+      "toolName": "Knowledge Base Policy Search",
+      "type": "beam_tool",
+      "integrationId": "knowledge-base-integration-missing",
+      "meta": {
+        "tool_name": "Knowledge Base Policy Search",
+        "function_name": "knowledge_base_search",
+        "requires_consent": false,
+        "action_type": "read",
+        "integration_name": "knowledge_base_wiki",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/search",
+            "method": "GET",
+            "query": ["q", "category", "limit"],
+            "body": null
+          },
+          "response": {
+            "data": "array",
+            "status": "string",
+            "search_results": "array",
+            "total_results": "number"
+          }
+        },
+        "integration_provider_auth": "api_key",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "search_keywords",
+          "fillType": "ai_fill",
+          "question": "What keywords should be searched in the knowledge base?",
+          "paramDescription": "Issue-related keywords for policy lookup",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "issue_category",
+          "fillType": "ai_fill",
+          "question": "What is the issue category for targeted search?",
+          "paramDescription": "Issue category to focus search results",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "policy_results",
+          "paramDescription": "Relevant company policies and procedures",
+          "id": "policy_results_param"
+        },
+        {
+          "paramName": "solution_guidance",
+          "paramDescription": "Step-by-step solutions from knowledge base",
+          "id": "solution_guidance_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_8_config_uuid"
+  },
+  "nodes": ["step_9_resolution_assessment"],
+  "id": "step_8_knowledge_lookup",
+  "integration_status": "MISSING",
+  "required_integration": "Knowledge Base/Wiki System",
+  "fallback_action": "Manual policy lookup required"
+}

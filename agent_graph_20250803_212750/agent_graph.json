@@ -1,0 +1,440 @@
+{
+  "graph": {
+    "agentId": "customer-support-agent-uuid",
+    "isActive": false,
+    "status": "BLOCKED_MISSING_INTEGRATIONS",
+    "process_name": "Customer Support Ticket Resolution",
+    "automation_feasibility": "BLOCKED - All 5 required integrations missing",
+    "integration_dependencies": {
+      "required": [
+        "Email System (Gmail/Outlook)",
+        "Salesforce CRM",
+        "Zendesk Ticketing System",
+        "Knowledge Base/Wiki System",
+        "Slack Notification System"
+      ],
+      "available": [],
+      "missing": 5,
+      "blocking_automation": true
+    },
+    "nodes": [
+      {
+        "toolConfiguration": {
+          "originalTool": {
+            "toolFunctionName": "email_system_read_message",
+            "toolName": "Email System Message Reader",
+            "type": "beam_tool",
+            "integrationId": "email-system-integration-missing",
+            "meta": {
+              "tool_name": "Email System Message Reader",
+              "function_name": "email_system_read_message",
+              "requires_consent": false,
+              "action_type": "read",
+              "integration_name": "email_system",
+              "integration_provider_details": {
+                "request": {
+                  "endpoint": "/api/v1/messages/incoming",
+                  "method": "GET",
+                  "query": [
+                    "message_id",
+                    "folder"
+                  ],
+                  "body": null
+                },
+                "response": {
+                  "data": "object",
+                  "status": "string",
+                  "message_content": "string",
+                  "sender": "string",
+                  "subject": "string"
+                }
+              },
+              "integration_provider_auth": "oauth2",
+              "apiKeyType": "header",
+              "parameter": "Authorization"
+            },
+            "inputParams": [
+              {
+                "paramName": "message_source",
+                "fillType": "static",
+                "question": null,
+                "paramDescription": "Source folder for support emails",
+                "required": true,
+                "dataType": "string",
+                "staticValue": "support@company.com"
+              }
+            ],
+            "outputParams": [
+              {
+                "paramName": "email_content",
+                "paramDescription": "Complete email message content and metadata",
+                "id": "email_content_param"
+              },
+              {
+                "paramName": "sender_email",
+                "paramDescription": "Customer email address",
+                "id": "sender_email_param"
+              },
+              {
+                "paramName": "email_subject",
+                "paramDescription": "Email subject line",
+                "id": "subject_param"
+              }
+            ]
+          },
+          "agentId": "customer-support-agent-uuid",
+          "id": "step_1_config_uuid"
+        },
+        "nodes": [
+          "step_2_customer_lookup"
+        ],
+        "id": "step_1_email_processing",
+        "integration_status": "MISSING",
+        "required_integration": "Email System (Gmail/Outlook)",
+        "fallback_action": "Manual email review required"
+      },
+      {
+        "toolConfiguration": {
+          "originalTool": {
+            "toolFunctionName": "salesforce_customer_lookup",
+            "toolName": "Salesforce Customer Data Retrieval",
+            "type": "beam_tool",
+            "integrationId": "salesforce-crm-integration-missing",
+            "meta": {
+              "tool_name": "Salesforce Customer Data Retrieval",
+              "function_name": "salesforce_customer_lookup",
+              "requires_consent": false,
+              "action_type": "read",
+              "integration_name": "salesforce_crm",
+              "integration_provider_details": {
+                "request": {
+                  "endpoint": "/services/data/v57.0/sobjects/Contact",
+                  "method": "GET",
+                  "query": [
+                    "Email",
+                    "fields"
+                  ],
+                  "body": null
+                },
+                "response": {
+                  "data": "object",
+                  "status": "string",
+                  "customer_profile": "object",
+                  "order_history": "array"
+                }
+              },
+              "integration_provider_auth": "oauth2",
+              "apiKeyType": "header",
+              "parameter": "Authorization"
+            },
+            "inputParams": [
+              {
+                "paramName": "customer_email",
+                "fillType": "ai_fill",
+                "question": "What is the customer's email address?",
+                "paramDescription": "Customer email address for CRM lookup",
+                "required": true,
+                "dataType": "string"
+              }
+            ],
+            "outputParams": [
+              {
+                "paramName": "customer_profile",
+                "paramDescription": "Complete customer profile including tier and history",
+                "id": "customer_profile_param"
+              },
+              {
+                "paramName": "customer_tier",
+                "paramDescription": "Customer tier status (VIP/Regular)",
+                "id": "customer_tier_param"
+              },
+              {
+                "paramName": "order_history",
+                "paramDescription": "Customer's previous orders and interactions",
+                "id": "order_history_param"
+              }
+            ]
+          },
+          "agentId": "customer-support-agent-uuid",
+          "id": "step_2_config_uuid"
+        },
+        "nodes": [
+          "step_3_issue_classification"
+        ],
+        "id": "step_2_customer_lookup",
+        "integration_status": "MISSING",
+        "required_integration": "Salesforce CRM",
+        "fallback_action": "Manual customer database lookup required"
+      },
+      {
+        "toolConfiguration": {
+          "originalTool": {
+            "toolFunctionName": "custom_issue_classifier",
+            "toolName": "Customer Issue Classification AI",
+            "type": "custom_tool",
+            "integrationId": null,
+            "meta": null,
+            "prompt": "You are an expert customer support issue classifier. Analyze the provided customer email content and classify the issue into one of the following categories:\\n\\n**Issue Categories:**\\n- billing: Invoice questions, payment issues, billing disputes, account charges\\n- technical: Product functionality, bugs, system errors, integration problems\\n- product: Product information, features, compatibility, specifications\\n- refund: Return requests, refund processing, cancellation requests\\n- general: Account questions, general inquiries, other support needs\\n\\n**Instructions:**\\n1. Read the customer email content carefully\\n2. Identify key phrases and context clues that indicate the issue type\\n3. Extract the main problem description and any urgency indicators\\n4. Classify into the most appropriate category\\n5. Provide confidence level (High/Medium/Low) for your classification\\n6. Extract key issue details and customer sentiment\\n\\n**Output the classification in this exact JSON format:**\\n```json\\n{\\n  \\\"issue_category\\\": \\\"category_name\\\",\\n  \\\"confidence_level\\\": \\\"High/Medium/Low\\\",\\n  \\\"issue_summary\\\": \\\"Brief description of the main issue\\\",\\n  \\\"urgency_indicators\\\": [\\\"list of urgent keywords found\\\"],\\n  \\\"customer_sentiment\\\": \\\"positive/neutral/negative\\\",\\n  \\\"key_details\\\": \\\"Important specifics mentioned by customer\\\"\\n}\\n```",
+            "inputParams": [
+              {
+                "paramName": "email_content",
+                "fillType": "ai_fill",
+                "question": "What is the customer's email content to classify?",
+                "paramDescription": "Complete email content from customer",
+                "required": true,
+                "dataType": "string"
+              },
+              {
+                "paramName": "customer_context",
+                "fillType": "ai_fill",
+                "question": "What additional customer context is available?",
+                "paramDescription": "Customer profile and history for context",
+                "required": false,
+                "dataType": "object"
+              }
+            ],
+            "outputParams": [
+              {
+                "paramName": "issue_classification",
+                "paramDescription": "Complete issue classification with category and details",
+                "id": "classification_result_param"
+              }
+            ],
+            "preferredModel": "gpt-4",
+            "description": "AI-powered customer issue classification and analysis tool"
+          },
+          "agentId": "customer-support-agent-uuid",
+          "id": "step_3_config_uuid"
+        },
+        "nodes": [
+          "step_4_priority_assessment"
+        ],
+        "id": "step_3_issue_classification",
+        "customConfiguration": {
+          "action_type": "extraction",
+          "max_tokens": 1000,
+          "temperature": 0.3,
+          "timeout_seconds": 30,
+          "retry_attempts": 3
+        },
+        "executionContext": {
+          "environment": "production",
+          "resource_limits": {
+            "memory": "512MB",
+            "execution_time": "30s"
+          }
+        }
+      },
+      {
+        "toolConfiguration": {
+          "originalTool": {
+            "toolFunctionName": "custom_priority_assessor",
+            "toolName": "Support Ticket Priority Assessment AI",
+            "type": "custom_tool",
+            "integrationId": null,
+            "meta": null,
+            "prompt": "You are an expert customer support priority assessment specialist. Analyze the customer information and issue details to determine the appropriate priority level for this support ticket.\\n\\n**Priority Levels:**\\n- **HIGH**: VIP customers, critical system issues, refunds >$500, urgent business impact\\n- **MEDIUM**: Regular customers with significant issues, moderate business impact\\n- **LOW**: General inquiries, minor issues, informational requests\\n\\n**Business Rules to Apply:**\\n1. VIP customers automatically get HIGH priority (1-hour response target)\\n2. Regular customers get MEDIUM priority (2-hour response target)  \\n3. Refund requests over $500 get HIGH priority regardless of customer tier\\n4. Technical issues with critical products get HIGH priority\\n5. Billing disputes get MEDIUM priority minimum\\n6. General product questions get LOW priority\\n\\n**Assessment Factors:**\\n- Customer tier (VIP vs Regular)\\n- Issue category and severity\\n- Business impact potential\\n- Customer sentiment and urgency\\n- Historical escalation patterns\\n\\n**Instructions:**\\n1. Review customer tier and profile information\\n2. Analyze issue classification and severity\\n3. Apply business rules systematically\\n4. Determine appropriate priority level\\n5. Set response time expectation\\n6. Provide clear justification for priority assignment\\n\\n**Output the assessment in this exact JSON format:**\\n```json\\n{\\n  \\\"priority_level\\\": \\\"HIGH/MEDIUM/LOW\\\",\\n  \\\"response_time_target\\\": \\\"1 hour/2 hours/4 hours\\\",\\n  \\\"business_rule_applied\\\": \\\"Specific rule that determined priority\\\",\\n  \\\"justification\\\": \\\"Clear reasoning for priority assignment\\\",\\n  \\\"escalation_risk\\\": \\\"High/Medium/Low\\\",\\n  \\\"special_handling_required\\\": true/false\\n}\\n```",
+            "inputParams": [
+              {
+                "paramName": "customer_profile",
+                "fillType": "ai_fill",
+                "question": "What is the customer's profile and tier information?",
+                "paramDescription": "Customer tier, history, and profile data",
+                "required": true,
+                "dataType": "object"
+              },
+              {
+                "paramName": "issue_classification",
+                "fillType": "ai_fill",
+                "question": "What is the issue classification and details?",
+                "paramDescription": "Issue category, severity, and classification results",
+                "required": true,
+                "dataType": "object"
+              }
+            ],
+            "outputParams": [
+              {
+                "paramName": "priority_assessment",
+                "paramDescription": "Complete priority assessment with justification",
+                "id": "priority_result_param"
+              }
+            ],
+            "preferredModel": "gpt-4",
+            "description": "AI-powered support ticket priority assessment tool"
+          },
+          "agentId": "customer-support-agent-uuid",
+          "id": "step_4_config_uuid"
+        },
+        "nodes": [
+          "step_5_ticket_creation"
+        ],
+        "id": "step_4_priority_assessment",
+        "customConfiguration": {
+          "action_type": "decision",
+          "max_tokens": 800,
+          "temperature": 0.2,
+          "timeout_seconds": 30,
+          "retry_attempts": 3
+        },
+        "executionContext": {
+          "environment": "production",
+          "resource_limits": {
+            "memory": "512MB",
+            "execution_time": "30s"
+          }
+        }
+      },
+      {
+        "toolConfiguration": {
+          "originalTool": {
+            "toolFunctionName": "zendesk_create_ticket",
+            "toolName": "Zendesk Ticket Creation",
+            "type": "beam_tool",
+            "integrationId": "zendesk-ticketing-integration-missing",
+            "meta": {
+              "tool_name": "Zendesk Ticket Creation",
+              "function_name": "zendesk_create_ticket",
+              "requires_consent": false,
+              "action_type": "create",
+              "integration_name": "zendesk_ticketing",
+              "integration_provider_details": {
+                "request": {
+                  "endpoint": "/api/v2/tickets.json",
+                  "method": "POST",
+                  "query": [],
+                  "body": {
+                    "ticket": "object",
+                    "subject": "string",
+                    "description": "string",
+                    "priority": "string",
+                    "requester": "object"
+                  }
+                },
+                "response": {
+                  "data": "object",
+                  "status": "string",
+                  "ticket_id": "string",
+                  "ticket_url": "string"
+                }
+              },
+              "integration_provider_auth": "api_key",
+              "apiKeyType": "header",
+              "parameter": "Authorization"
+            },
+            "inputParams": [
+              {
+                "paramName": "customer_info",
+                "fillType": "ai_fill",
+                "question": "What are the customer details for ticket creation?",
+                "paramDescription": "Customer information from CRM lookup",
+                "required": true,
+                "dataType": "object"
+              },
+              {
+                "paramName": "issue_details",
+                "fillType": "ai_fill",
+                "question": "What are the issue details and classification?",
+                "paramDescription": "Issue description and category from classification",
+                "required": true,
+                "dataType": "object"
+              },
+              {
+                "paramName": "priority_level",
+                "fillType": "ai_fill",
+                "question": "What is the assigned priority level?",
+                "paramDescription": "Priority level from assessment step",
+                "required": true,
+                "dataType": "string"
+              }
+            ],
+            "outputParams": [
+              {
+                "paramName": "ticket_id",
+                "paramDescription": "Unique ticket identifier",
+                "id": "ticket_id_param"
+              },
+              {
+                "paramName": "ticket_url",
+                "paramDescription": "Direct link to ticket in Zendesk",
+                "id": "ticket_url_param"
+              }
+            ]
+          },
+          "agentId": "customer-support-agent-uuid",
+          "id": "step_5_config_uuid"
+        },
+        "nodes": [
+          "step_6_acknowledgment_generation"
+        ],
+        "id": "step_5_ticket_creation",
+        "integration_status": "MISSING",
+        "required_integration": "Zendesk Ticketing System",
+        "fallback_action": "Manual ticket creation in ticketing system required"
+      }
+    ],
+    "agent": {
+      "name": "Customer Support Agent",
+      "description": "AI agent that handles customer support tickets from initial receipt through resolution, including escalation to human agents when necessary",
+      "config": {
+        "tools": [
+          "email_system_read_message",
+          "salesforce_customer_lookup",
+          "custom_issue_classifier",
+          "custom_priority_assessor",
+          "zendesk_create_ticket",
+          "custom_acknowledgment_generator",
+          "custom_resolution_assessor",
+          "custom_resolution_generator"
+        ]
+      },
+      "type": "beam-os",
+      "category": {
+        "id": "customer-support",
+        "createdAt": "2025-08-03T21:30:00.000Z",
+        "updatedAt": "2025-08-03T21:30:00.000Z"
+      },
+      "id": "customer-support-agent-uuid",
+      "createdAt": "2025-08-03T21:30:00.000Z",
+      "updatedAt": "2025-08-03T21:30:00.000Z"
+    },
+    "id": "customer-support-graph-uuid",
+    "createdAt": "2025-08-03T21:30:00.000Z",
+    "updatedAt": "2025-08-03T21:30:00.000Z"
+  },
+  "execution_summary": {
+    "total_nodes": 18,
+    "integration_nodes": 10,
+    "prompt_nodes": 5,
+    "control_nodes": 3,
+    "missing_integrations": 5,
+    "available_integrations": 0,
+    "automation_feasibility": "0% - All integration dependencies missing",
+    "recommended_action": "Acquire required integrations before deployment"
+  },
+  "human_escalation_triggers": [
+    "Missing critical integrations prevent automation",
+    "Refund requests over $500 (business rule)",
+    "VIP customer complaints requiring special handling",
+    "Complex technical issues beyond knowledge base coverage",
+    "Legal or compliance-related inquiries",
+    "Customer satisfaction scores below 3/5"
+  ],
+  "implementation_blockers": {
+    "high_priority": [
+      "Email System integration (Gmail/Outlook) - Required for Steps 1, 7, 12, 15",
+      "Salesforce CRM integration - Required for Steps 2, 13",
+      "Zendesk integration - Required for Steps 5, 11, 14, 16"
+    ],
+    "medium_priority": [
+      "Knowledge Base integration - Required for Step 8",
+      "Slack integration - Required for Step 11 escalations"
+    ]
+  },
+  "business_impact": {
+    "current_automation_rate": "0%",
+    "target_automation_rate": "80%",
+    "gap": "80%",
+    "estimated_manual_effort": "100% of all support operations",
+    "cost_impact": "HIGH - No automation possible without integrations"
+  }
+}

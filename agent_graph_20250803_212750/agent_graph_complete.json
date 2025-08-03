@@ -1,0 +1,262 @@
+{
+  "graph": {
+    "agentId": "customer-support-agent-uuid",
+    "isActive": false,
+    "status": "BLOCKED_MISSING_INTEGRATIONS",
+    "process_name": "Customer Support Ticket Resolution",
+    "automation_feasibility": "BLOCKED - All 5 required integrations missing",
+    "total_nodes_generated": 19,
+    "integration_dependencies": {
+      "required": [
+        "Email System (Gmail/Outlook)",
+        "Salesforce CRM", 
+        "Zendesk Ticketing System",
+        "Knowledge Base/Wiki System",
+        "Slack Notification System"
+      ],
+      "available": [],
+      "missing": 5,
+      "blocking_automation": true
+    },
+    "node_summary": {
+      "total_nodes": 19,
+      "trigger_nodes": 1,
+      "integration_nodes": 11,
+      "prompt_nodes": 5, 
+      "end_nodes": 2,
+      "prompt_tools_generated": 7,
+      "missing_integrations": 11
+    },
+    "generated_prompt_tools": [
+      {
+        "node_id": "step_3_issue_classification", 
+        "tool_name": "Customer Issue Classification AI",
+        "action_type": "extraction",
+        "purpose": "Categorize customer issues into billing/technical/product/refund/general"
+      },
+      {
+        "node_id": "step_4_priority_assessment",
+        "tool_name": "Support Ticket Priority Assessment AI", 
+        "action_type": "decision",
+        "purpose": "Determine ticket priority based on customer tier and issue severity"
+      },
+      {
+        "node_id": "step_6_acknowledgment_generation",
+        "tool_name": "Customer Acknowledgment Email Generator",
+        "action_type": "generation", 
+        "purpose": "Generate personalized acknowledgment emails with ticket info"
+      },
+      {
+        "node_id": "step_9_resolution_assessment",
+        "tool_name": "Automated Resolution Capability Assessment",
+        "action_type": "decision",
+        "purpose": "Determine if issue can be resolved automatically or needs human escalation"
+      },
+      {
+        "node_id": "step_10_resolution_generation",
+        "tool_name": "Customer Resolution Email Generator",
+        "action_type": "generation",
+        "purpose": "Generate comprehensive resolution emails with solutions and policy references"
+      },
+      {
+        "node_id": "process_complete",
+        "tool_name": "Support Process Completion",
+        "action_type": "verification",
+        "purpose": "Finalize process completion and generate summary metrics"
+      },
+      {
+        "node_id": "human_escalation_endpoint", 
+        "tool_name": "Human Escalation Process End",
+        "action_type": "verification",
+        "purpose": "Document and conclude human escalation handoffs"
+      }
+    ],
+    "missing_integration_tools": [
+      {
+        "node_id": "trigger_email_receipt",
+        "tool_name": "Customer Support Email Trigger",
+        "integration_required": "Email System Webhook",
+        "action_type": "read"
+      },
+      {
+        "node_id": "step_1_email_processing",
+        "tool_name": "Email System Message Reader", 
+        "integration_required": "Email System (Gmail/Outlook)",
+        "action_type": "read"
+      },
+      {
+        "node_id": "step_2_customer_lookup",
+        "tool_name": "Salesforce Customer Data Retrieval",
+        "integration_required": "Salesforce CRM",
+        "action_type": "read"
+      },
+      {
+        "node_id": "step_5_ticket_creation",
+        "tool_name": "Zendesk Ticket Creation",
+        "integration_required": "Zendesk Ticketing System", 
+        "action_type": "create"
+      },
+      {
+        "node_id": "step_7_send_acknowledgment",
+        "tool_name": "Email System Message Sender",
+        "integration_required": "Email System (Gmail/Outlook)",
+        "action_type": "create"
+      },
+      {
+        "node_id": "step_8_knowledge_lookup",
+        "tool_name": "Knowledge Base Policy Search",
+        "integration_required": "Knowledge Base/Wiki System",
+        "action_type": "read"
+      },
+      {
+        "node_id": "step_11_human_escalation",
+        "tool_name": "Human Agent Escalation System", 
+        "integration_required": "Zendesk + Slack Integration",
+        "action_type": "update"
+      },
+      {
+        "node_id": "step_12_send_resolution",
+        "tool_name": "Resolution Email Sender",
+        "integration_required": "Email System (Gmail/Outlook)",
+        "action_type": "create"
+      },
+      {
+        "node_id": "step_13_update_crm",
+        "tool_name": "Salesforce Customer Record Update",
+        "integration_required": "Salesforce CRM",
+        "action_type": "update"
+      },
+      {
+        "node_id": "step_14_mark_resolved",
+        "tool_name": "Zendesk Ticket Status Update",
+        "integration_required": "Zendesk Ticketing System",
+        "action_type": "update"
+      },
+      {
+        "node_id": "step_15_schedule_followup", 
+        "tool_name": "Automated Follow-up Scheduler",
+        "integration_required": "Email System with Scheduling",
+        "action_type": "create"
+      },
+      {
+        "node_id": "step_16_monitor_human",
+        "tool_name": "Human Agent Progress Monitor",
+        "integration_required": "Zendesk Ticketing System",
+        "action_type": "read"
+      }
+    ],
+    "workflow_paths": {
+      "automated_resolution_path": [
+        "trigger_email_receipt",
+        "step_1_email_processing", 
+        "step_2_customer_lookup",
+        "step_3_issue_classification",
+        "step_4_priority_assessment",
+        "step_5_ticket_creation",
+        "step_6_acknowledgment_generation",
+        "step_7_send_acknowledgment",
+        "step_8_knowledge_lookup",
+        "step_9_resolution_assessment",
+        "step_10_resolution_generation",
+        "step_12_send_resolution",
+        "step_13_update_crm",
+        "step_14_mark_resolved", 
+        "step_15_schedule_followup",
+        "process_complete"
+      ],
+      "human_escalation_path": [
+        "trigger_email_receipt",
+        "step_1_email_processing",
+        "step_2_customer_lookup", 
+        "step_3_issue_classification",
+        "step_4_priority_assessment",
+        "step_5_ticket_creation",
+        "step_6_acknowledgment_generation",
+        "step_7_send_acknowledgment",
+        "step_8_knowledge_lookup",
+        "step_9_resolution_assessment",
+        "step_11_human_escalation",
+        "step_16_monitor_human",
+        "human_escalation_endpoint"
+      ]
+    },
+    "agent": {
+      "name": "Customer Support Agent",
+      "description": "AI agent that handles customer support tickets from initial receipt through resolution, including escalation to human agents when necessary",
+      "config": {
+        "tools": [
+          "email_trigger_listener",
+          "email_system_read_message",
+          "salesforce_customer_lookup",
+          "custom_issue_classifier",
+          "custom_priority_assessor", 
+          "zendesk_create_ticket",
+          "custom_acknowledgment_generator",
+          "email_system_send_message",
+          "knowledge_base_search",
+          "custom_resolution_assessor",
+          "custom_resolution_generator",
+          "zendesk_slack_escalation",
+          "email_system_send_resolution",
+          "salesforce_update_customer",
+          "zendesk_update_ticket_status",
+          "email_system_schedule_followup",
+          "zendesk_monitor_ticket_progress",
+          "process_completion_handler",
+          "human_escalation_finalizer"
+        ]
+      },
+      "type": "beam-os",
+      "category": {
+        "id": "customer-support",
+        "createdAt": "2025-08-03T21:30:00.000Z", 
+        "updatedAt": "2025-08-03T21:30:00.000Z"
+      },
+      "id": "customer-support-agent-uuid",
+      "createdAt": "2025-08-03T21:30:00.000Z",
+      "updatedAt": "2025-08-03T21:30:00.000Z"
+    },
+    "id": "customer-support-graph-uuid",
+    "createdAt": "2025-08-03T21:30:00.000Z",
+    "updatedAt": "2025-08-03T21:30:00.000Z"
+  },
+  "execution_summary": {
+    "pipeline_status": "COMPLETED",
+    "total_files_generated": 22,
+    "sop_generated": true,
+    "graph_concept_created": true,
+    "all_nodes_generated": true,
+    "prompt_tools_created": 7,
+    "integration_placeholders_created": 12,
+    "automation_feasibility": "0% - All integration dependencies missing",
+    "recommended_action": "Acquire required integrations before deployment"
+  },
+  "human_escalation_triggers": [
+    "Missing critical integrations prevent automation",
+    "Refund requests over $500 (business rule)",
+    "VIP customer complaints requiring special handling", 
+    "Complex technical issues beyond knowledge base coverage",
+    "Legal or compliance-related inquiries",
+    "Customer satisfaction scores below 3/5"
+  ],
+  "implementation_blockers": {
+    "high_priority": [
+      "Email System integration (Gmail/Outlook) - Required for 5 nodes",
+      "Salesforce CRM integration - Required for 2 nodes",
+      "Zendesk integration - Required for 4 nodes"
+    ],
+    "medium_priority": [
+      "Knowledge Base integration - Required for 1 node",
+      "Slack integration - Required for 1 node"
+    ]
+  },
+  "business_impact": {
+    "current_automation_rate": "0%",
+    "target_automation_rate": "80%", 
+    "gap": "80%",
+    "prompt_tools_ready": "7 AI tools generated and ready for deployment",
+    "integration_tools_blocked": "12 integration tools require external systems",
+    "estimated_manual_effort": "100% of all support operations",
+    "cost_impact": "HIGH - No automation possible without integrations"
+  }
+}

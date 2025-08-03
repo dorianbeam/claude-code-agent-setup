@@ -1,0 +1,232 @@
+{
+  "graph_concept": {
+    "process_name": "Customer Support Ticket Resolution",
+    "total_steps": 16,
+    "integration_dependencies": 5,
+    "automation_feasibility": "BLOCKED - Missing all required integrations",
+    "nodes": [
+      {
+        "node_id": "trigger_email_receipt",
+        "step_reference": "Trigger",
+        "node_type": "trigger",
+        "objective": "Customer email triggers support process",
+        "tool_category": "integration",
+        "action_type": "read",
+        "integration_required": "Email System",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_1_email_processing",
+        "step_reference": "Step 1",
+        "node_type": "process",
+        "objective": "Extract and parse incoming customer support email",
+        "tool_category": "integration",
+        "action_type": "read",
+        "integration_required": "Email System",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_2_customer_lookup",
+        "step_reference": "Step 2", 
+        "node_type": "process",
+        "objective": "Retrieve customer information from CRM system",
+        "tool_category": "integration",
+        "action_type": "read",
+        "integration_required": "Salesforce CRM",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_3_issue_classification",
+        "step_reference": "Step 3",
+        "node_type": "ai_agent",
+        "objective": "Categorize the customer issue type using AI analysis",
+        "tool_category": "prompt",
+        "action_type": "extraction",
+        "integration_required": null,
+        "integration_available": true
+      },
+      {
+        "node_id": "step_4_priority_assessment",
+        "step_reference": "Step 4",
+        "node_type": "ai_agent", 
+        "objective": "Determine ticket priority based on customer tier and issue severity",
+        "tool_category": "prompt",
+        "action_type": "decision",
+        "integration_required": null,
+        "integration_available": true
+      },
+      {
+        "node_id": "step_5_ticket_creation",
+        "step_reference": "Step 5",
+        "node_type": "process",
+        "objective": "Create support ticket in ticketing system with unique identifier",
+        "tool_category": "integration",
+        "action_type": "create",
+        "integration_required": "Zendesk",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_6_acknowledgment_generation",
+        "step_reference": "Step 6",
+        "node_type": "ai_agent",
+        "objective": "Generate personalized acknowledgment email content",
+        "tool_category": "prompt",
+        "action_type": "generation",
+        "integration_required": null,
+        "integration_available": true
+      },
+      {
+        "node_id": "step_7_send_acknowledgment",
+        "step_reference": "Step 7",
+        "node_type": "process",
+        "objective": "Send acknowledgment email to customer",
+        "tool_category": "integration", 
+        "action_type": "create",
+        "integration_required": "Email System",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_8_knowledge_lookup",
+        "step_reference": "Step 8",
+        "node_type": "process",
+        "objective": "Search internal knowledge base for relevant policies and solutions",
+        "tool_category": "integration",
+        "action_type": "read",
+        "integration_required": "Knowledge Base",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_9_resolution_assessment",
+        "step_reference": "Step 9",
+        "node_type": "decision",
+        "objective": "Determine if issue can be resolved automatically",
+        "tool_category": "prompt",
+        "action_type": "decision",
+        "integration_required": null,
+        "integration_available": true
+      },
+      {
+        "node_id": "step_10_resolution_generation",
+        "step_reference": "Step 10",
+        "node_type": "ai_agent",
+        "objective": "Generate resolution response email content",
+        "tool_category": "prompt",
+        "action_type": "generation",
+        "integration_required": null,
+        "integration_available": true
+      },
+      {
+        "node_id": "step_11_human_escalation",
+        "step_reference": "Step 11",
+        "node_type": "human_loop",
+        "objective": "Assign ticket to appropriate human agent",
+        "tool_category": "integration",
+        "action_type": "update",
+        "integration_required": "Zendesk + Slack",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_12_send_resolution",
+        "step_reference": "Step 12",
+        "node_type": "process",
+        "objective": "Send resolution email to customer",
+        "tool_category": "integration",
+        "action_type": "create",
+        "integration_required": "Email System",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_13_update_crm",
+        "step_reference": "Step 13", 
+        "node_type": "process",
+        "objective": "Update CRM with resolution details",
+        "tool_category": "integration",
+        "action_type": "update",
+        "integration_required": "Salesforce CRM",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_14_mark_resolved",
+        "step_reference": "Step 14",
+        "node_type": "process",
+        "objective": "Update ticket status to resolved",
+        "tool_category": "integration",
+        "action_type": "update", 
+        "integration_required": "Zendesk",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_15_schedule_followup",
+        "step_reference": "Step 15",
+        "node_type": "process",
+        "objective": "Set follow-up reminder for satisfaction check",
+        "tool_category": "integration",
+        "action_type": "create",
+        "integration_required": "Email System",
+        "integration_available": false
+      },
+      {
+        "node_id": "step_16_monitor_human",
+        "step_reference": "Step 16",
+        "node_type": "process",
+        "objective": "Track human agent progress on escalated ticket",
+        "tool_category": "integration",
+        "action_type": "read",
+        "integration_required": "Zendesk",
+        "integration_available": false
+      },
+      {
+        "node_id": "process_complete",
+        "step_reference": "End",
+        "node_type": "end",
+        "objective": "Customer support process completed successfully",
+        "tool_category": null,
+        "action_type": null,
+        "integration_required": null,
+        "integration_available": true
+      },
+      {
+        "node_id": "human_escalation_endpoint",
+        "step_reference": "Escalation End",
+        "node_type": "end",
+        "objective": "Process escalated to human intervention",  
+        "tool_category": null,
+        "action_type": null,
+        "integration_required": null,
+        "integration_available": true
+      }
+    ],
+    "node_type_summary": {
+      "trigger": 1,
+      "process": 9, 
+      "ai_agent": 4,
+      "decision": 1,
+      "human_loop": 1,
+      "end": 2
+    },
+    "integration_summary": {
+      "total_integration_nodes": 10,
+      "available_integrations": 0,
+      "missing_integrations": 10,
+      "prompt_nodes_available": 5
+    },
+    "branching_logic": {
+      "step_1_email_processing": ["step_2_customer_lookup", "human_escalation_endpoint"],
+      "step_2_customer_lookup": ["step_3_issue_classification"],
+      "step_3_issue_classification": ["step_4_priority_assessment"],
+      "step_4_priority_assessment": ["step_5_ticket_creation"],
+      "step_5_ticket_creation": ["step_6_acknowledgment_generation"],
+      "step_6_acknowledgment_generation": ["step_7_send_acknowledgment"],
+      "step_7_send_acknowledgment": ["step_8_knowledge_lookup"],
+      "step_8_knowledge_lookup": ["step_9_resolution_assessment", "step_11_human_escalation"],
+      "step_9_resolution_assessment": ["step_10_resolution_generation", "step_11_human_escalation"],
+      "step_10_resolution_generation": ["step_12_send_resolution"],
+      "step_11_human_escalation": ["step_16_monitor_human"],
+      "step_12_send_resolution": ["step_13_update_crm"],
+      "step_13_update_crm": ["step_14_mark_resolved"],
+      "step_14_mark_resolved": ["step_15_schedule_followup"],
+      "step_15_schedule_followup": ["process_complete"],
+      "step_16_monitor_human": ["step_15_schedule_followup", "human_escalation_endpoint"]
+    }
+  }
+}

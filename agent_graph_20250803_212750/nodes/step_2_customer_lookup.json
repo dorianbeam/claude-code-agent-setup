@@ -1,0 +1,68 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "salesforce_customer_lookup",
+      "toolName": "Salesforce Customer Data Retrieval",
+      "type": "beam_tool", 
+      "integrationId": "salesforce-crm-integration-missing",
+      "meta": {
+        "tool_name": "Salesforce Customer Data Retrieval",
+        "function_name": "salesforce_customer_lookup",
+        "requires_consent": false,
+        "action_type": "read",
+        "integration_name": "salesforce_crm",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/services/data/v57.0/sobjects/Contact",
+            "method": "GET",
+            "query": ["Email", "fields"],
+            "body": null
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "customer_profile": "object",
+            "order_history": "array"
+          }
+        },
+        "integration_provider_auth": "oauth2",
+        "apiKeyType": "header", 
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "customer_email",
+          "fillType": "ai_fill",
+          "question": "What is the customer's email address?",
+          "paramDescription": "Customer email address for CRM lookup",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "customer_profile",
+          "paramDescription": "Complete customer profile including tier and history",
+          "id": "customer_profile_param"
+        },
+        {
+          "paramName": "customer_tier",
+          "paramDescription": "Customer tier status (VIP/Regular)",
+          "id": "customer_tier_param"
+        },
+        {
+          "paramName": "order_history",
+          "paramDescription": "Customer's previous orders and interactions",
+          "id": "order_history_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_2_config_uuid"
+  },
+  "nodes": ["step_3_issue_classification"],
+  "id": "step_2_customer_lookup",
+  "integration_status": "MISSING",
+  "required_integration": "Salesforce CRM",
+  "fallback_action": "Manual customer database lookup required"
+}

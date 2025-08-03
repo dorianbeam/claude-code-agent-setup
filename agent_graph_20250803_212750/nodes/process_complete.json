@@ -1,0 +1,50 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "process_completion_handler",
+      "toolName": "Support Process Completion",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are a customer support process completion specialist. Your role is to finalize the customer support ticket resolution process and ensure all required actions have been completed successfully.\n\n**Completion Checklist:**\n1. Verify customer issue has been resolved\n2. Confirm all communications have been sent\n3. Ensure CRM records are updated\n4. Validate ticket status is correctly set\n5. Confirm follow-up is scheduled\n6. Generate completion summary\n\n**Final Actions:**\n- Mark process as successfully completed\n- Generate completion report with key metrics\n- Update process performance statistics\n- Close any remaining open tasks\n- Archive process documentation\n\n**Success Criteria:**\n- Customer received resolution email\n- CRM records accurately reflect interaction\n- Ticket marked as resolved in ticketing system\n- Follow-up scheduled per business rules\n- All audit trail requirements met\n\n**Output completion summary in this format:**\n```json\n{\n  \"process_status\": \"COMPLETED\",\n  \"completion_timestamp\": \"ISO timestamp\",\n  \"resolution_method\": \"automated/human_assisted\",\n  \"customer_satisfaction_expected\": \"High/Medium/Low\",\n  \"total_processing_time\": \"Duration from trigger to completion\",\n  \"steps_completed\": \"Number of workflow steps executed\",\n  \"follow_up_scheduled\": true/false,\n  \"audit_trail_complete\": true/false\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "process_execution_data",
+          "fillType": "ai_fill",
+          "question": "What is the complete process execution data?",
+          "paramDescription": "All data from workflow execution for completion verification",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "completion_summary",
+          "paramDescription": "Complete process completion summary and metrics",
+          "id": "completion_summary_param"
+        }
+      ],
+      "preferredModel": "gpt-3.5-turbo",
+      "description": "Process completion verification and reporting tool"
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "completion_config_uuid"
+  },
+  "nodes": [],
+  "id": "process_complete",
+  "node_type": "end",
+  "customConfiguration": {
+    "action_type": "verification",
+    "max_tokens": 500,
+    "temperature": 0.1,
+    "timeout_seconds": 15,
+    "retry_attempts": 2
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "256MB",
+      "execution_time": "15s"
+    }
+  }
+}

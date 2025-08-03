@@ -1,0 +1,65 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "custom_resolution_assessor",
+      "toolName": "Automated Resolution Capability Assessment",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are an expert customer support automation specialist. Analyze the customer issue and available knowledge base information to determine whether this issue can be resolved automatically or requires human intervention.\n\n**Resolution Capability Criteria:**\n\n**CAN RESOLVE AUTOMATICALLY:**\n- Standard policy questions with clear documentation\n- Common technical issues with documented solutions\n- Billing inquiries with straightforward answers\n- Product information requests\n- Account status or order status inquiries\n- Password resets and basic account changes\n\n**REQUIRES HUMAN INTERVENTION:**\n- Complex technical problems requiring investigation\n- Refund requests over $500 (per business rule)\n- Billing disputes requiring manual review\n- Product defects or quality issues\n- Legal or compliance-related inquiries\n- Escalated customer complaints\n- Issues not covered in knowledge base\n- Customer requests for human agent\n\n**Business Rules to Apply:**\n1. Refund requests >$500 automatically escalate to human\n2. VIP customer complaints escalate to human\n3. Critical product issues escalate to human\n4. Legal/compliance issues escalate to human\n5. Multiple failed resolution attempts escalate to human\n\n**Assessment Process:**\n1. Analyze issue complexity and type\n2. Check knowledge base coverage for this issue\n3. Apply mandatory business rules\n4. Evaluate automation capability\n5. Determine appropriate resolution path\n6. Provide clear reasoning for decision\n\n**Output the assessment in this exact JSON format:**\n```json\n{\n  \"can_resolve_automatically\": true/false,\n  \"resolution_path\": \"automated/human_escalation\",\n  \"confidence_level\": \"High/Medium/Low\",\n  \"reasoning\": \"Clear explanation for decision\",\n  \"business_rule_triggered\": \"Specific rule if applicable\",\n  \"escalation_reason\": \"Reason for human escalation if applicable\",\n  \"estimated_resolution_complexity\": \"Simple/Moderate/Complex\"\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "issue_details",
+          "fillType": "ai_fill",
+          "question": "What are the complete issue details and classification?",
+          "paramDescription": "Issue classification, customer details, and problem description",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "knowledge_base_results",
+          "fillType": "ai_fill",
+          "question": "What relevant information was found in the knowledge base?",
+          "paramDescription": "Knowledge base search results and relevant policies",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "customer_profile",
+          "fillType": "ai_fill",
+          "question": "What is the customer's profile and tier?",
+          "paramDescription": "Customer tier and profile information for business rules",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "resolution_decision",
+          "paramDescription": "Complete resolution capability assessment",
+          "id": "resolution_decision_param"
+        }
+      ],
+      "preferredModel": "gpt-4",
+      "description": "AI-powered resolution capability assessment tool"
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_9_config_uuid"
+  },
+  "nodes": ["step_10_resolution_generation", "step_11_human_escalation"],
+  "id": "step_9_resolution_assessment",
+  "customConfiguration": {
+    "action_type": "decision",
+    "max_tokens": 1000,
+    "temperature": 0.2,
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "512MB",
+      "execution_time": "30s"
+    }
+  }
+}

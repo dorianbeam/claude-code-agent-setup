@@ -1,0 +1,85 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "email_system_send_resolution",
+      "toolName": "Resolution Email Sender",
+      "type": "beam_tool",
+      "integrationId": "email-system-integration-missing",
+      "meta": {
+        "tool_name": "Resolution Email Sender",
+        "function_name": "email_system_send_resolution",
+        "requires_consent": false,
+        "action_type": "create",
+        "integration_name": "email_system",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/messages/send",
+            "method": "POST",
+            "query": [],
+            "body": {
+              "to": "string",
+              "subject": "string",
+              "body": "string",
+              "from": "string",
+              "ticket_id": "string"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "message_id": "string",
+            "delivery_confirmation": "string"
+          }
+        },
+        "integration_provider_auth": "oauth2",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "customer_email",
+          "fillType": "ai_fill",
+          "question": "What is the customer's email address?",
+          "paramDescription": "Customer email for resolution delivery",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "resolution_content",
+          "fillType": "ai_fill",
+          "question": "What is the complete resolution email content?",
+          "paramDescription": "Generated resolution email with solutions",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "ticket_reference",
+          "fillType": "ai_fill",
+          "question": "What is the ticket ID for tracking?",
+          "paramDescription": "Ticket ID for customer reference",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "delivery_status",
+          "paramDescription": "Email delivery confirmation and status",
+          "id": "delivery_status_param"
+        },
+        {
+          "paramName": "resolution_message_id",
+          "paramDescription": "Unique message ID for resolution email",
+          "id": "resolution_message_id_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_12_config_uuid"
+  },
+  "nodes": ["step_13_update_crm"],
+  "id": "step_12_send_resolution",
+  "integration_status": "MISSING",
+  "required_integration": "Email System (Gmail/Outlook)",
+  "fallback_action": "Manual resolution email sending required"
+}

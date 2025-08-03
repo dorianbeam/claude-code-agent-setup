@@ -1,0 +1,73 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "custom_resolution_generator",
+      "toolName": "Customer Resolution Email Generator",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are an expert customer service resolution specialist. Generate a comprehensive, professional resolution email that addresses the customer's issue with clear solutions and next steps.\n\n**Resolution Email Requirements:**\n- Professional, empathetic, and helpful tone\n- Personalized with customer name and issue details\n- Reference specific company policies when applicable\n- Provide clear, step-by-step solutions\n- Include relevant documentation links\n- Offer additional support options\n- Professional company signature\n\n**Resolution Structure:**\n1. **Personalized Greeting**: Address customer by name\n2. **Issue Acknowledgment**: Confirm understanding of their issue\n3. **Solution Explanation**: Clear, detailed resolution steps\n4. **Policy References**: Cite relevant company policies\n5. **Additional Resources**: Provide helpful links or contacts\n6. **Follow-up Offer**: Invite further questions\n7. **Professional Closure**: Company signature and contact info\n\n**Content Guidelines:**\n- Use customer's specific issue details for personalization\n- Reference knowledge base information accurately\n- Maintain consistent brand voice and tone\n- Provide actionable solutions, not just explanations\n- Include preventive advice when relevant\n- Be concise but thorough\n\n**Policy Integration:**\n- Always reference specific company policy sections\n- Include policy documentation links when available\n- Ensure compliance with company guidelines\n- Maintain legal and regulatory compliance\n\n**Instructions:**\n1. Review the customer's specific issue and history\n2. Use knowledge base information to craft accurate solutions\n3. Personalize the response appropriately\n4. Include all required structural elements\n5. Ensure professional tone throughout\n6. Provide clear next steps for the customer\n\n**Output the resolution email in this format:**\n```json\n{\n  \"email_subject\": \"Resolution for Your Support Request - [Ticket ID]\",\n  \"email_body\": \"Complete formatted resolution email content\",\n  \"policies_referenced\": [\"List of company policies mentioned\"],\n  \"solution_type\": \"Information/Action Required/Resolved\",\n  \"follow_up_required\": true/false\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "customer_details",
+          "fillType": "ai_fill",
+          "question": "What are the customer's details and profile?",
+          "paramDescription": "Customer name, profile, and interaction history",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "issue_information",
+          "fillType": "ai_fill",
+          "question": "What are the complete issue details?",
+          "paramDescription": "Issue classification, description, and customer concerns",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "knowledge_base_solutions",
+          "fillType": "ai_fill",
+          "question": "What solutions were found in the knowledge base?",
+          "paramDescription": "Relevant policies, procedures, and solutions",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "ticket_id",
+          "fillType": "ai_fill",
+          "question": "What is the ticket ID for reference?",
+          "paramDescription": "Ticket identifier for customer reference",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "resolution_email",
+          "paramDescription": "Complete resolution email content",
+          "id": "resolution_email_param"
+        }
+      ],
+      "preferredModel": "gpt-4",
+      "description": "AI-powered customer resolution email generation tool"
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_10_config_uuid"
+  },
+  "nodes": ["step_12_send_resolution"],
+  "id": "step_10_resolution_generation",
+  "customConfiguration": {
+    "action_type": "generation",
+    "max_tokens": 2000,
+    "temperature": 0.4,
+    "timeout_seconds": 45,
+    "retry_attempts": 3
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "512MB",
+      "execution_time": "45s"
+    }
+  }
+}

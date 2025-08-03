@@ -1,0 +1,50 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "human_escalation_finalizer",
+      "toolName": "Human Escalation Process End",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are a human escalation process finalizer. Your role is to properly conclude customer support tickets that have been escalated to human agents and document the escalation outcome.\n\n**Escalation Outcomes:**\n- **RESOLVED_BY_HUMAN**: Human agent successfully resolved the issue\n- **PENDING_HUMAN_ACTION**: Ticket remains with human agent for further action\n- **ESCALATED_TO_MANAGER**: Issue required manager-level intervention\n- **CUSTOMER_FOLLOW_UP_REQUIRED**: Waiting for customer response\n- **EXTERNAL_DEPENDENCY**: Resolution blocked by external factors\n\n**Documentation Requirements:**\n1. Record escalation reason and timeline\n2. Document human agent actions taken\n3. Capture resolution method if completed\n4. Note any outstanding actions required\n5. Update customer satisfaction tracking\n6. Generate escalation performance metrics\n\n**Final Processing:**\n- Close automated workflow with human handoff\n- Ensure proper audit trail documentation\n- Update escalation statistics for reporting\n- Set appropriate follow-up mechanisms\n- Archive escalation documentation\n\n**Output escalation completion in this format:**\n```json\n{\n  \"escalation_status\": \"COMPLETED_HANDOFF\",\n  \"completion_timestamp\": \"ISO timestamp\",\n  \"escalation_outcome\": \"RESOLVED_BY_HUMAN/PENDING_HUMAN_ACTION/etc\",\n  \"human_agent_assigned\": \"Agent name or ID\",\n  \"escalation_duration\": \"Time from escalation to handoff\",\n  \"automation_recovery_possible\": true/false,\n  \"customer_notification_sent\": true/false,\n  \"follow_up_mechanism\": \"human_managed/automated/hybrid\"\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "escalation_data",
+          "fillType": "ai_fill",
+          "question": "What is the complete escalation data?",
+          "paramDescription": "All escalation information and human agent assignment details",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "escalation_completion",
+          "paramDescription": "Complete escalation handoff summary and metrics",
+          "id": "escalation_completion_param"
+        }
+      ],
+      "preferredModel": "gpt-3.5-turbo",
+      "description": "Human escalation process completion and documentation tool"
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "escalation_end_config_uuid"
+  },
+  "nodes": [],
+  "id": "human_escalation_endpoint",
+  "node_type": "end",
+  "customConfiguration": {
+    "action_type": "verification",
+    "max_tokens": 400,
+    "temperature": 0.1,
+    "timeout_seconds": 15,
+    "retry_attempts": 2
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "256MB",
+      "execution_time": "15s"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "email_trigger_listener",
+      "toolName": "Customer Support Email Trigger",
+      "type": "beam_tool",
+      "integrationId": "email-system-integration-missing",
+      "meta": {
+        "tool_name": "Customer Support Email Trigger",
+        "function_name": "email_trigger_listener",
+        "requires_consent": false,
+        "action_type": "read",
+        "integration_name": "email_system",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/webhooks/email-received",
+            "method": "POST",
+            "query": [],
+            "body": {
+              "email_data": "object",
+              "trigger_event": "string",
+              "timestamp": "string"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "trigger_activated": "boolean",
+            "workflow_initiated": "boolean"
+          }
+        },
+        "integration_provider_auth": "webhook_signature",
+        "apiKeyType": "header",
+        "parameter": "X-Webhook-Signature"
+      },
+      "inputParams": [
+        {
+          "paramName": "incoming_email",
+          "fillType": "trigger_data",
+          "question": null,
+          "paramDescription": "Complete incoming email data from support address",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "trigger_data",
+          "paramDescription": "Processed trigger data for workflow initiation",
+          "id": "trigger_data_param"
+        },
+        {
+          "paramName": "customer_email_raw",
+          "paramDescription": "Raw customer email content and metadata",
+          "id": "customer_email_raw_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "trigger_config_uuid"
+  },
+  "nodes": ["step_1_email_processing"],
+  "id": "trigger_email_receipt",
+  "node_type": "trigger",
+  "integration_status": "MISSING",
+  "required_integration": "Email System Webhook",
+  "fallback_action": "Manual process initiation required"
+}

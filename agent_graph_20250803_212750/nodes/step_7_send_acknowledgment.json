@@ -1,0 +1,76 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "email_system_send_message",
+      "toolName": "Email System Message Sender",
+      "type": "beam_tool",
+      "integrationId": "email-system-integration-missing",
+      "meta": {
+        "tool_name": "Email System Message Sender",
+        "function_name": "email_system_send_message",
+        "requires_consent": false,
+        "action_type": "create",
+        "integration_name": "email_system",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v1/messages/send",
+            "method": "POST",
+            "query": [],
+            "body": {
+              "to": "string",
+              "subject": "string",
+              "body": "string",
+              "from": "string"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string",
+            "message_id": "string",
+            "delivery_status": "string"
+          }
+        },
+        "integration_provider_auth": "oauth2",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "recipient_email",
+          "fillType": "ai_fill",
+          "question": "What is the recipient's email address?",
+          "paramDescription": "Customer email address for acknowledgment",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "email_content",
+          "fillType": "ai_fill",
+          "question": "What is the complete email content to send?",
+          "paramDescription": "Generated acknowledgment email content",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "send_status",
+          "paramDescription": "Email delivery status and confirmation",
+          "id": "send_status_param"
+        },
+        {
+          "paramName": "message_id",
+          "paramDescription": "Unique message identifier for tracking",
+          "id": "message_id_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_7_config_uuid"
+  },
+  "nodes": ["step_8_knowledge_lookup"],
+  "id": "step_7_send_acknowledgment",
+  "integration_status": "MISSING",
+  "required_integration": "Email System (Gmail/Outlook)",
+  "fallback_action": "Manual email sending required"
+}

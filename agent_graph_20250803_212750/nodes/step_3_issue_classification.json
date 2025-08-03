@@ -1,0 +1,57 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "custom_issue_classifier",
+      "toolName": "Customer Issue Classification AI",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are an expert customer support issue classifier. Analyze the provided customer email content and classify the issue into one of the following categories:\n\n**Issue Categories:**\n- billing: Invoice questions, payment issues, billing disputes, account charges\n- technical: Product functionality, bugs, system errors, integration problems\n- product: Product information, features, compatibility, specifications\n- refund: Return requests, refund processing, cancellation requests\n- general: Account questions, general inquiries, other support needs\n\n**Instructions:**\n1. Read the customer email content carefully\n2. Identify key phrases and context clues that indicate the issue type\n3. Extract the main problem description and any urgency indicators\n4. Classify into the most appropriate category\n5. Provide confidence level (High/Medium/Low) for your classification\n6. Extract key issue details and customer sentiment\n\n**Output the classification in this exact JSON format:**\n```json\n{\n  \"issue_category\": \"category_name\",\n  \"confidence_level\": \"High/Medium/Low\",\n  \"issue_summary\": \"Brief description of the main issue\",\n  \"urgency_indicators\": [\"list of urgent keywords found\"],\n  \"customer_sentiment\": \"positive/neutral/negative\",\n  \"key_details\": \"Important specifics mentioned by customer\"\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "email_content",
+          "fillType": "ai_fill",
+          "question": "What is the customer's email content to classify?",
+          "paramDescription": "Complete email content from customer",
+          "required": true,
+          "dataType": "string"
+        },
+        {
+          "paramName": "customer_context",
+          "fillType": "ai_fill", 
+          "question": "What additional customer context is available?",
+          "paramDescription": "Customer profile and history for context",
+          "required": false,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "issue_classification",
+          "paramDescription": "Complete issue classification with category and details",
+          "id": "classification_result_param"
+        }
+      ],
+      "preferredModel": "gpt-4",
+      "description": "AI-powered customer issue classification and analysis tool"
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_3_config_uuid"
+  },
+  "nodes": ["step_4_priority_assessment"],
+  "id": "step_3_issue_classification",
+  "customConfiguration": {
+    "action_type": "extraction",
+    "max_tokens": 1000,
+    "temperature": 0.3,
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "512MB",
+      "execution_time": "30s"
+    }
+  }
+}

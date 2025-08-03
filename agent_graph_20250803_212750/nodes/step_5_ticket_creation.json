@@ -1,0 +1,85 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "zendesk_create_ticket",
+      "toolName": "Zendesk Ticket Creation",
+      "type": "beam_tool",
+      "integrationId": "zendesk-ticketing-integration-missing",
+      "meta": {
+        "tool_name": "Zendesk Ticket Creation",
+        "function_name": "zendesk_create_ticket",
+        "requires_consent": false,
+        "action_type": "create",
+        "integration_name": "zendesk_ticketing",
+        "integration_provider_details": {
+          "request": {
+            "endpoint": "/api/v2/tickets.json",
+            "method": "POST", 
+            "query": [],
+            "body": {
+              "ticket": "object",
+              "subject": "string",
+              "description": "string",
+              "priority": "string",
+              "requester": "object"
+            }
+          },
+          "response": {
+            "data": "object",
+            "status": "string", 
+            "ticket_id": "string",
+            "ticket_url": "string"
+          }
+        },
+        "integration_provider_auth": "api_key",
+        "apiKeyType": "header",
+        "parameter": "Authorization"
+      },
+      "inputParams": [
+        {
+          "paramName": "customer_info",
+          "fillType": "ai_fill",
+          "question": "What are the customer details for ticket creation?",
+          "paramDescription": "Customer information from CRM lookup",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "issue_details",
+          "fillType": "ai_fill",
+          "question": "What are the issue details and classification?",
+          "paramDescription": "Issue description and category from classification",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "priority_level",
+          "fillType": "ai_fill",
+          "question": "What is the assigned priority level?",
+          "paramDescription": "Priority level from assessment step",
+          "required": true,
+          "dataType": "string"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "ticket_id",
+          "paramDescription": "Unique ticket identifier",
+          "id": "ticket_id_param"
+        },
+        {
+          "paramName": "ticket_url",
+          "paramDescription": "Direct link to ticket in Zendesk",
+          "id": "ticket_url_param"
+        }
+      ]
+    },
+    "agentId": "customer-support-agent-uuid",
+    "id": "step_5_config_uuid"
+  },
+  "nodes": ["step_6_acknowledgment_generation"],
+  "id": "step_5_ticket_creation",
+  "integration_status": "MISSING",
+  "required_integration": "Zendesk Ticketing System",
+  "fallback_action": "Manual ticket creation in ticketing system required"
+}

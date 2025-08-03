@@ -1,0 +1,57 @@
+{
+  "toolConfiguration": {
+    "originalTool": {
+      "toolFunctionName": "custom_priority_assessor",
+      "toolName": "Support Ticket Priority Assessment AI",
+      "type": "custom_tool",
+      "integrationId": null,
+      "meta": null,
+      "prompt": "You are an expert customer support priority assessment specialist. Analyze the customer information and issue details to determine the appropriate priority level for this support ticket.\n\n**Priority Levels:**\n- **HIGH**: VIP customers, critical system issues, refunds >$500, urgent business impact\n- **MEDIUM**: Regular customers with significant issues, moderate business impact\n- **LOW**: General inquiries, minor issues, informational requests\n\n**Business Rules to Apply:**\n1. VIP customers automatically get HIGH priority (1-hour response target)\n2. Regular customers get MEDIUM priority (2-hour response target)  \n3. Refund requests over $500 get HIGH priority regardless of customer tier\n4. Technical issues with critical products get HIGH priority\n5. Billing disputes get MEDIUM priority minimum\n6. General product questions get LOW priority\n\n**Assessment Factors:**\n- Customer tier (VIP vs Regular)\n- Issue category and severity\n- Business impact potential\n- Customer sentiment and urgency\n- Historical escalation patterns\n\n**Instructions:**\n1. Review customer tier and profile information\n2. Analyze issue classification and severity\n3. Apply business rules systematically\n4. Determine appropriate priority level\n5. Set response time expectation\n6. Provide clear justification for priority assignment\n\n**Output the assessment in this exact JSON format:**\n```json\n{\n  \"priority_level\": \"HIGH/MEDIUM/LOW\",\n  \"response_time_target\": \"1 hour/2 hours/4 hours\",\n  \"business_rule_applied\": \"Specific rule that determined priority\",\n  \"justification\": \"Clear reasoning for priority assignment\",\n  \"escalation_risk\": \"High/Medium/Low\",\n  \"special_handling_required\": true/false\n}\n```",
+      "inputParams": [
+        {
+          "paramName": "customer_profile",
+          "fillType": "ai_fill",
+          "question": "What is the customer's profile and tier information?",
+          "paramDescription": "Customer tier, history, and profile data",
+          "required": true,
+          "dataType": "object"
+        },
+        {
+          "paramName": "issue_classification",
+          "fillType": "ai_fill",
+          "question": "What is the issue classification and details?",
+          "paramDescription": "Issue category, severity, and classification results",
+          "required": true,
+          "dataType": "object"
+        }
+      ],
+      "outputParams": [
+        {
+          "paramName": "priority_assessment",
+          "paramDescription": "Complete priority assessment with justification",
+          "id": "priority_result_param"
+        }
+      ],
+      "preferredModel": "gpt-4",
+      "description": "AI-powered support ticket priority assessment tool"
+    },
+    "agentId": "customer-support-agent-uuid", 
+    "id": "step_4_config_uuid"
+  },
+  "nodes": ["step_5_ticket_creation"],
+  "id": "step_4_priority_assessment",
+  "customConfiguration": {
+    "action_type": "decision",
+    "max_tokens": 800,
+    "temperature": 0.2,
+    "timeout_seconds": 30,
+    "retry_attempts": 3
+  },
+  "executionContext": {
+    "environment": "production",
+    "resource_limits": {
+      "memory": "512MB",
+      "execution_time": "30s"
+    }
+  }
+}
